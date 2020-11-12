@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
@@ -8,7 +11,7 @@ public class RecipeInterface extends JFrame{
 	
 
 	
-	public RecipeInterface(String name,String recipe,String ingredient,String quantitative) {
+	public RecipeInterface(Food food) {
 		setTitle("백바구니");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800,600);
@@ -16,12 +19,14 @@ public class RecipeInterface extends JFrame{
 		//setResizable(false); //프레임 크기 고정
 		Container c = getContentPane();
 		c.setLayout(null);
+		Food chosenFood = food;
+		
 		
 
-		String[] recipeArray =recipe.split("#");
-		String[] ingredientArray=ingredient.split("#");
-		String[] quantitativeArray=quantitative.split("#");
-		JLabel foodName = new JLabel(name); //요리의 이름을 출력하는 Label
+		String[] recipeArray =chosenFood.getRecipe().split("#");
+		String[] ingredientArray=chosenFood.getIngredient().split("#");
+		String[] quantitativeArray=chosenFood.getQuanti().split("#");
+		JLabel foodName = new JLabel(chosenFood.getName()); //요리의 이름을 출력하는 Label
 		foodName.setLocation(20,1);
 		foodName.setSize(100,30);
 		c.add(foodName);
@@ -35,11 +40,23 @@ public class RecipeInterface extends JFrame{
 		JButton reportBtn = new JButton("신 고"); //신고 버튼
 		reportBtn.setSize(80,30);
 		reportBtn.setLocation(580, 520);
+			
+		reportBtn.addActionListener(new ActionListener(){ 
+			public void actionPerformed(ActionEvent e) {
+					ReportFrame report = new ReportFrame(food);
+			}
+		});;
 		c.add(reportBtn);
+		
 		
 		JButton backBtn = new JButton("뒤로 가기"); //신고 버튼
 		backBtn.setSize(100,30);
 		backBtn.setLocation(670, 520);
+		backBtn.addActionListener(new ActionListener(){ 
+			public void actionPerformed(ActionEvent e) {
+					CookListFrame cL = new CookListFrame();
+			}
+		});;
 		c.add(backBtn);
 		
 		
