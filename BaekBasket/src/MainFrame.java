@@ -10,71 +10,92 @@ import java.awt.event.*;
 
 public class MainFrame extends JFrame{
 	public MainFrame() {
-		Font f1;
-		JFrame frame = new JFrame("¹é¹Ù±¸´Ï");
-		frame.setLocation(0,0);
-		frame.setSize(800,600);
-		frame.setLayout(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JPanel panel1 = new JPanel();
-		panel1.setLocation(0,0);
-		panel1.setSize(800,200);
-		panel1.setLayout(null);
-		panel1.setBackground(Color.ORANGE);
+	Font f1;
+      JFrame frame = new JFrame("ë°±ë°”êµ¬ë‹ˆ"); //ë©”ì¸ frame
+      frame.setLocation(0,0);
+      frame.setSize(800,600);
+      frame.setLayout(null);
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
+      JPanel panel1 = new JPanel(); // íŒ¨ë„1
+      panel1.setLocation(0,0);
+      panel1.setSize(800,200);
+      panel1.setLayout(null);
+      panel1.setBackground(Color.ORANGE);
 
-		JPanel panel2 = new JPanel();
-		panel2.setLocation(0,200);
-		panel2.setSize(800,400);
-		panel2.setLayout(null);
-		panel2.setBackground(Color.WHITE);
+      JPanel panel2 = new JPanel(); // íŒ¨ë„2
+      panel2.setLocation(0,200);
+      panel2.setSize(800,400);
+      panel2.setLayout(null);
+      panel2.setBackground(Color.WHITE);
 
-		f1 = new Font("µ¸¿ò", Font.BOLD, 50);
-		JLabel label = new JLabel("¡Ú¹é¹Ù±¸´Ï");
-		label.setFont(f1);
-		label.setLocation(270,50);
-		label.setSize(300,50);
+      f1 = new Font("ë‹ì›€", Font.BOLD, 50);
+      JLabel label = new JLabel("â˜…ë°±ë°”êµ¬ë‹ˆ"); // ì œëª© ë¼ë²¨
+      label.setFont(f1);
+      label.setLocation(270,50);
+      label.setSize(300,50);
 
-		JButton bSelectCook = new JButton("¿ä¸® ¼±ÅÃÇÏ±â");
-		bSelectCook.setLocation(270,50);
-		bSelectCook.setSize(250,50);
-		bSelectCook.setBackground(Color.WHITE);
-		
-		bSelectCook.addActionListener(new ActionListener(){ 
-			public void actionPerformed(ActionEvent e){
-				CookListFrame cookListFrame = new CookListFrame();
-			}
-		});;
+      JButton bSelectCook = new JButton("ìš”ë¦¬ ì„ íƒí•˜ê¸°"); //ìš”ë¦¬ì„ íƒ ë²„íŠ¼
+      bSelectCook.setLocation(270,30);
+      bSelectCook.setSize(250,50);
+      bSelectCook.setBackground(Color.WHITE);
+      
+      bSelectCook.addActionListener(new ActionListener(){  // ìš”ë¦¬ì„ íƒ ë¦¬ìŠ¤ë„ˆ
+         public void actionPerformed(ActionEvent e){
+            if(e.getSource()==bSelectCook) {
+               CookListFrame cookListFrame = new CookListFrame();
+               frame.setVisible(false);
+            }
+         }
+      });;
 
-		JButton bSelectIngredient = new JButton("Àç·á ¼±ÅÃÇÏ±â");
-		bSelectIngredient.setLocation(270,150);
-		bSelectIngredient.setSize(250,50);
-		bSelectIngredient.setBackground(Color.WHITE);
-		bSelectIngredient.addActionListener(new ActionListener(){ 
-			public void actionPerformed(ActionEvent e){
-				FoodSelectInterface fSI = new FoodSelectInterface();
-			}
-		});;
+      JButton bSelectIngredient = new JButton("ì¬ë£Œ ì„ íƒí•˜ê¸°"); //ì¬ë£Œì„ íƒ ë²„íŠ¼
+      bSelectIngredient.setLocation(270,115);
+      bSelectIngredient.setSize(250,50);
+      bSelectIngredient.setBackground(Color.WHITE);
+      
+      bSelectIngredient.addActionListener(new ActionListener(){  // ìš”ë¦¬ì„ íƒ ë¦¬ìŠ¤ë„ˆ
+          public void actionPerformed(ActionEvent e){
+             if(e.getSource()==bSelectIngredient) {
+                FoodSelectInterface foodSelectInterface = new FoodSelectInterface();
+                frame.setVisible(false);
+             }
+          }
+       });;
 
-		JButton bCancel = new JButton("  Á¾  ·á  ");
-		bCancel.setLocation(270,250);
-		bCancel.setSize(250,50);
-		bCancel.setBackground(Color.WHITE);
-		
-		panel1.add(label);
-		panel2.add(bSelectCook);
-		panel2.add(bSelectIngredient);
-		panel2.add(bCancel);
+      JButton bBarsket = new JButton("ì¥ë°”êµ¬ë‹ˆ "); //ì¢…ë£Œ ë²„íŠ¼
+      bBarsket.setLocation(270,200);
+      bBarsket.setSize(250,50);
+      bBarsket.setBackground(Color.WHITE);
+      
+      JButton bCancel = new JButton("  ì¢…  ë£Œ  "); //ì¢…ë£Œ ë²„íŠ¼
+      bCancel.setLocation(270,285);
+      bCancel.setSize(250,50);
+      bCancel.setBackground(Color.WHITE);
+      
+      bCancel.addActionListener(new ActionListener(){ //ì¢…ë£Œë²„íŠ¼ ë¦¬ìŠ¤ë„ˆ
+         public void actionPerformed(ActionEvent e){
+            if(e.getSource()==bCancel) {
+               System.exit(0);
+            }
+         }
+      });;
+      
+      panel1.add(label);
+      panel2.add(bSelectCook);
+      panel2.add(bSelectIngredient);
+      panel2.add(bBarsket);
+      panel2.add(bCancel);
 
-		frame.add(panel1);
-		frame.add(panel2);
-		frame.setVisible(true);
-	}
+      frame.add(panel1);
+      frame.add(panel2);
+      frame.setVisible(true);
+   }
 	public static void main(String[] args) {
 		Food[] f = new Food[100];
-		f[0]=new Food(1,	"¸ñ»ì½ºÅ×ÀÌÅ©Ä«·¹ ",	"1.°í±â »çÀÌÀÇ ÈûÁÙÀ» ²÷¾î ÁÖ°í ¼Ò±İ¡¤ÈÄÃß·Î ¹Ø°£ÇÕ´Ï´Ù. ¹Ø°£ÀÌ °í¸£°Ô µÉ ¼ö ÀÖµµ·Ï ¼ÕÀ¸·Î °¡º±°Ô °í±â¸¦ µÎµå·Á Áİ´Ï´Ù.#2. ÆÄÇÁ¸®Ä«¿Í ´ç±Ù, °¨ÀÚ¸¦ ¸Ô±â ÁÁÀº Å©±â·Î ½ä°í ¾çÆÄ¸¦ Ã¤½ç´Ï´Ù. ´Ü, ÅäÇÎ Àç·áÀÎ ÆÄÇÁ¸®Ä«´Â ÃëÇâ²¯ ¹Ù²ãµµ ÁÁÀº ¼±ÅÃ Àç·áÀÔ´Ï´Ù.#3. ÆÒ¿¡ ±â¸§À» µÎ¸£°í, ¸ñ»ìÀÌ ÁøÇÑ °¥»öÀÌ µÉ ¶§±îÁö °­ºÒ¿¡ ±Á½À´Ï´Ù. ³Ê¹« ÀÍÇû³ª ½ÍÀ» ¶§±îÁö ±Á´Â °ÍÀÌ Æ÷ÀÎÆ®¿¡¿ä.#4. Ã¤½ã ¾çÆÄ¸¦ ³Ö°í ÁßºÒ·Î ÁÙÀÎ µÚ, ÀÌÈÄ ´ç±Ù°ú °¨ÀÚ, ¹°À» ³Ö°í ²úÀÔ´Ï´Ù.#5. °¨ÀÚ¿Í ´ç±ÙÀÌ Àß ÀÍÀ¸¸é Ä«·¹ Á¶°¢À» ³Ö°í Àß Á£½À´Ï´Ù. °íÇüÄ«·¹´Â ÀÏ¹İ ¸¶Æ®¿¡¼­ ½±°Ô º¼ ¼ö ÀÖ´Â °íÃ¼Çü Ä«·¹ÀÔ´Ï´Ù.#6. ¸¶Áö¸·À¸·Î ÆÄÇÁ¸®Ä«¸¦ ³Ö°í ¼¯¾î Áİ´Ï´Ù.",	"µÅÁö ¸ñ»ì 300g (150*2)#²É¼Ò±İ ÇÑ²¿Áı#ÈÄÃå°¡·ç ÇÑ²¿Áı#ÆÄÇÁ¸®Ä« °¢ 50g¾¿#°¨ÀÚ 150g (1°³)#´ç±Ù 70g (1/4°³)#¾çÆÄ 200g (1°³)#½Ä¿ëÀ¯ 30ml (2Å«¼ú)#¹° 665ml (3ÄÅ ¹İ)#°íÇüÄ«·¹ 60g",	"µÅÁö°í±â#¼Ò±İ#ÈÄÃå°¡·ç#ÆÄÇÁ¸®Ä«#°¨ÀÚ#´ç±Ù#¾çÆÄ#½Ä¿ëÀ¯#°íÇüÄ«·¹",	"https://www.youtube.com/watch?v=wDXCxlcr3hY&t=8s",	2);
-		f[1]=new Food(2,	"ÃÊ°£´Ü ±èÄ¡Âî°³",	"1. ´ëÆÄ¿Í °íÃß´Â ¼Û¼Û ½ä¾î ÁØºñÇÕ´Ï´Ù. #2. ³¿ºñ¿¡ ¸ñ»ì°ú ½Ò¶ß¹°À» ³Ö°í ÃæºĞÈ÷ ²ú¿©, °í±â À°¼ö¸¦ ¿ì·Á³À´Ï´Ù. #3. °í±â À°¼ö°¡ ÃæºĞÈ÷ ¿ì·¯³ª¸é ±èÄ¡¿Í ´ÙÁø¸¶´ÃÀ» ³Ö½À´Ï´Ù. #4. ±¹¹°ÀÌ ²ú¾î¿À¸£¸é ´ëÆÄ¿Í °íÃß¸¦ ³Ö½À´Ï´Ù. #5. °íÃå°¡·ç¸¦ ³Ö°í Àß ¼¯½À´Ï´Ù. ±½Àº °íÃå°¡·ç¿Í °í¿î °íÃå°¡·ç¸¦ ¹İ¾¿ ¼¯¾î ³ÖÀ¸¸é ´õ¿í ÁÁ½À´Ï´Ù. #6. ±¹°£Àå°ú »õ¿ìÁ£À» ³Ö°í Àß Àú¾î Áİ´Ï´Ù. ",	"1. µÅÁö°í±â 120g#2. ½Ò¶ß¹° 380ml (¾à 2ÄÅ)#3. ÀÚ¸¥ ±èÄ¡ 150g#4. ´ÙÁø¸¶´Ã 30g (2Å«¼ú)#5. ´ëÆÄ 30g #6. Ã»¾ç°íÃß 10g#7. È«°íÃß 10g#8. °í¿î °íÃå°¡·ç 30g (2Å«¼ú)#9. ±½Àº °íÃå°¡·ç 30g (2Å«¼ú)#10. ±¹°£Àå 15ml (1Å«¼ú)#11. »õ¿ìÁ£ 15g (1Å«¼ú)",	"µÅÁö°í±â#½Ò¶ß¹°#±èÄ¡#¸¶´Ã#´ëÆÄ#°íÃß#°íÃå°¡·ç#±¹°£Àå#»õ¿ìÁ£",	"https://www.youtube.com/watch?v=DnQ09ZZCjCs&t=245s",	1);
-		f[2]=new Food(3,	"¶Ò¹è±â °è¶õÂò",	"1. ´ëÆÄ´Â ¼Û¼Û ½ä°í, »õ¿ìÁ£Àº Àß°Ô ´ÙÁ® ÁØºñÇÕ´Ï´Ù. #2. ¹Í½Ìº¼¿¡ ´Ş°¿°ú »õ¿ìÁ£, ¼³ÅÁÀ» ³Ö°í Àß ¼¯½À´Ï´Ù. #3. Àç·á°¡ Àß ¼¯ÀÌ¸é ¹°À» ³Ö°í ´Ù½Ã ÇÑ ¹ø Àß Àú¾îÁİ´Ï´Ù. #4. ¶Ò¹è±â¿¡ ´Ş°¿¹°À» ³Ö°í Áß¾àºÒ·Î °¡¿­ÇÕ´Ï´Ù. #5. ´Ş°¿ÀÌ ¶Ò¹è±â ¹Ù´Ú°ú °¡ÀåÀÚ¸®¿¡ ´­¾îºÙÁö ¾Êµµ·Ï, ¼ù°¡¶ôÀ¸·Î ¹Ù´ÚÀ» ±Ü¾î°¡¸ç ²ú¿©Áİ´Ï´Ù. #6. ´Ş°¿ÀÌ ¸ù±Û¸ù±ÛÇÏ°Ô ÀÍÀ¸¸é ´ëÆÄ¸¦ ³Ö°í ¼¯½À´Ï´Ù. #7. »çÀÌÁî°¡ ¸Â´Â ´Ù¸¥ ¶Ò¹è±â¸¦ µÚÁı¾î ¶Ñ²±Ã³·³ µ¤¾î ¾àºÒ·Î ÀÍÈü´Ï´Ù. #8. ´ëÆÄ, Âü±â¸§, ±ú¸¦ ´Ş°¿Âò À§¿¡ °í¸íÀ¸·Î »Ñ·Á ¸¶¹«¸®ÇÕ´Ï´Ù.",	"1. ´Ş°¿ 6°³ 324g#2. »õ¿ìÁ£ 1Å«¼ú (15g)#3. ¼³ÅÁ 1ÀÛÀº¼ú (5g) #4. ¹° 1/3ÄÅ (60ml)#5. Âü±â¸§ 1Å«¼ú (15ml)#6. Âü±ú 1ÀÛÀº¼ú (5g)#7. ´ëÆÄ 40g",	"´Ş°¿,»õ¿ìÁ£,¼³ÅÁ,Âü±â¸§,Âü±ú,´ëÆÄ",	"https://www.youtube.com/watch?v=_H64Kz7Mgz4",	2);
+		f[0]=new Food(1,	"ëª©ì‚´ìŠ¤í…Œì´í¬ì¹´ë ˆ ",	"1.ê³ ê¸° ì‚¬ì´ì˜ í˜ì¤„ì„ ëŠì–´ ì£¼ê³  ì†Œê¸ˆÂ·í›„ì¶”ë¡œ ë°‘ê°„í•©ë‹ˆë‹¤. ë°‘ê°„ì´ ê³ ë¥´ê²Œ ë  ìˆ˜ ìˆë„ë¡ ì†ìœ¼ë¡œ ê°€ë³ê²Œ ê³ ê¸°ë¥¼ ë‘ë“œë ¤ ì¤ë‹ˆë‹¤.#2. íŒŒí”„ë¦¬ì¹´ì™€ ë‹¹ê·¼, ê°ìë¥¼ ë¨¹ê¸° ì¢‹ì€ í¬ê¸°ë¡œ ì°ê³  ì–‘íŒŒë¥¼ ì±„ì¹ë‹ˆë‹¤. ë‹¨, í† í•‘ ì¬ë£Œì¸ íŒŒí”„ë¦¬ì¹´ëŠ” ì·¨í–¥ê» ë°”ê¿”ë„ ì¢‹ì€ ì„ íƒ ì¬ë£Œì…ë‹ˆë‹¤.#3. íŒ¬ì— ê¸°ë¦„ì„ ë‘ë¥´ê³ , ëª©ì‚´ì´ ì§„í•œ ê°ˆìƒ‰ì´ ë  ë•Œê¹Œì§€ ê°•ë¶ˆì— êµ½ìŠµë‹ˆë‹¤. ë„ˆë¬´ ìµí˜”ë‚˜ ì‹¶ì„ ë•Œê¹Œì§€ êµ½ëŠ” ê²ƒì´ í¬ì¸íŠ¸ì—ìš”.#4. ì±„ì¬ ì–‘íŒŒë¥¼ ë„£ê³  ì¤‘ë¶ˆë¡œ ì¤„ì¸ ë’¤, ì´í›„ ë‹¹ê·¼ê³¼ ê°ì, ë¬¼ì„ ë„£ê³  ë“ì…ë‹ˆë‹¤.#5. ê°ìì™€ ë‹¹ê·¼ì´ ì˜ ìµìœ¼ë©´ ì¹´ë ˆ ì¡°ê°ì„ ë„£ê³  ì˜ ì “ìŠµë‹ˆë‹¤. ê³ í˜•ì¹´ë ˆëŠ” ì¼ë°˜ ë§ˆíŠ¸ì—ì„œ ì‰½ê²Œ ë³¼ ìˆ˜ ìˆëŠ” ê³ ì²´í˜• ì¹´ë ˆì…ë‹ˆë‹¤.#6. ë§ˆì§€ë§‰ìœ¼ë¡œ íŒŒí”„ë¦¬ì¹´ë¥¼ ë„£ê³  ì„ì–´ ì¤ë‹ˆë‹¤.",	"ë¼ì§€ ëª©ì‚´ 300g (150*2)#ê½ƒì†Œê¸ˆ í•œê¼¬ì§‘#í›„ì¶§ê°€ë£¨ í•œê¼¬ì§‘#íŒŒí”„ë¦¬ì¹´ ê° 50gì”©#ê°ì 150g (1ê°œ)#ë‹¹ê·¼ 70g (1/4ê°œ)#ì–‘íŒŒ 200g (1ê°œ)#ì‹ìš©ìœ  30ml (2í°ìˆ )#ë¬¼ 665ml (3ì»µ ë°˜)#ê³ í˜•ì¹´ë ˆ 60g",	"ë¼ì§€ê³ ê¸°#ì†Œê¸ˆ#í›„ì¶§ê°€ë£¨#íŒŒí”„ë¦¬ì¹´#ê°ì#ë‹¹ê·¼#ì–‘íŒŒ#ì‹ìš©ìœ #ê³ í˜•ì¹´ë ˆ",	"https://www.youtube.com/watch?v=wDXCxlcr3hY&t=8s",	2);
+		f[1]=new Food(2,	"ì´ˆê°„ë‹¨ ê¹€ì¹˜ì°Œê°œ",	"1. ëŒ€íŒŒì™€ ê³ ì¶”ëŠ” ì†¡ì†¡ ì°ì–´ ì¤€ë¹„í•©ë‹ˆë‹¤. #2. ëƒ„ë¹„ì— ëª©ì‚´ê³¼ ìŒ€ëœ¨ë¬¼ì„ ë„£ê³  ì¶©ë¶„íˆ ë“ì—¬, ê³ ê¸° ìœ¡ìˆ˜ë¥¼ ìš°ë ¤ëƒ…ë‹ˆë‹¤. #3. ê³ ê¸° ìœ¡ìˆ˜ê°€ ì¶©ë¶„íˆ ìš°ëŸ¬ë‚˜ë©´ ê¹€ì¹˜ì™€ ë‹¤ì§„ë§ˆëŠ˜ì„ ë„£ìŠµë‹ˆë‹¤. #4. êµ­ë¬¼ì´ ë“ì–´ì˜¤ë¥´ë©´ ëŒ€íŒŒì™€ ê³ ì¶”ë¥¼ ë„£ìŠµë‹ˆë‹¤. #5. ê³ ì¶§ê°€ë£¨ë¥¼ ë„£ê³  ì˜ ì„ìŠµë‹ˆë‹¤. êµµì€ ê³ ì¶§ê°€ë£¨ì™€ ê³ ìš´ ê³ ì¶§ê°€ë£¨ë¥¼ ë°˜ì”© ì„ì–´ ë„£ìœ¼ë©´ ë”ìš± ì¢‹ìŠµë‹ˆë‹¤. #6. êµ­ê°„ì¥ê³¼ ìƒˆìš°ì “ì„ ë„£ê³  ì˜ ì €ì–´ ì¤ë‹ˆë‹¤. ",	"1. ë¼ì§€ê³ ê¸° 120g#2. ìŒ€ëœ¨ë¬¼ 380ml (ì•½ 2ì»µ)#3. ìë¥¸ ê¹€ì¹˜ 150g#4. ë‹¤ì§„ë§ˆëŠ˜ 30g (2í°ìˆ )#5. ëŒ€íŒŒ 30g #6. ì²­ì–‘ê³ ì¶” 10g#7. í™ê³ ì¶” 10g#8. ê³ ìš´ ê³ ì¶§ê°€ë£¨ 30g (2í°ìˆ )#9. êµµì€ ê³ ì¶§ê°€ë£¨ 30g (2í°ìˆ )#10. êµ­ê°„ì¥ 15ml (1í°ìˆ )#11. ìƒˆìš°ì “ 15g (1í°ìˆ )",	"ë¼ì§€ê³ ê¸°#ìŒ€ëœ¨ë¬¼#ê¹€ì¹˜#ë§ˆëŠ˜#ëŒ€íŒŒ#ê³ ì¶”#ê³ ì¶§ê°€ë£¨#êµ­ê°„ì¥#ìƒˆìš°ì “",	"https://www.youtube.com/watch?v=DnQ09ZZCjCs&t=245s",	1);
+		f[2]=new Food(3,	"ëšë°°ê¸° ê³„ë€ì°œ",	"1. ëŒ€íŒŒëŠ” ì†¡ì†¡ ì°ê³ , ìƒˆìš°ì “ì€ ì˜ê²Œ ë‹¤ì ¸ ì¤€ë¹„í•©ë‹ˆë‹¤. #2. ë¯¹ì‹±ë³¼ì— ë‹¬ê±€ê³¼ ìƒˆìš°ì “, ì„¤íƒ•ì„ ë„£ê³  ì˜ ì„ìŠµë‹ˆë‹¤. #3. ì¬ë£Œê°€ ì˜ ì„ì´ë©´ ë¬¼ì„ ë„£ê³  ë‹¤ì‹œ í•œ ë²ˆ ì˜ ì €ì–´ì¤ë‹ˆë‹¤. #4. ëšë°°ê¸°ì— ë‹¬ê±€ë¬¼ì„ ë„£ê³  ì¤‘ì•½ë¶ˆë¡œ ê°€ì—´í•©ë‹ˆë‹¤. #5. ë‹¬ê±€ì´ ëšë°°ê¸° ë°”ë‹¥ê³¼ ê°€ì¥ìë¦¬ì— ëˆŒì–´ë¶™ì§€ ì•Šë„ë¡, ìˆŸê°€ë½ìœ¼ë¡œ ë°”ë‹¥ì„ ê¸ì–´ê°€ë©° ë“ì—¬ì¤ë‹ˆë‹¤. #6. ë‹¬ê±€ì´ ëª½ê¸€ëª½ê¸€í•˜ê²Œ ìµìœ¼ë©´ ëŒ€íŒŒë¥¼ ë„£ê³  ì„ìŠµë‹ˆë‹¤. #7. ì‚¬ì´ì¦ˆê°€ ë§ëŠ” ë‹¤ë¥¸ ëšë°°ê¸°ë¥¼ ë’¤ì§‘ì–´ ëšœê»‘ì²˜ëŸ¼ ë®ì–´ ì•½ë¶ˆë¡œ ìµí™ë‹ˆë‹¤. #8. ëŒ€íŒŒ, ì°¸ê¸°ë¦„, ê¹¨ë¥¼ ë‹¬ê±€ì°œ ìœ„ì— ê³ ëª…ìœ¼ë¡œ ë¿Œë ¤ ë§ˆë¬´ë¦¬í•©ë‹ˆë‹¤.",	"1. ë‹¬ê±€ 6ê°œ 324g#2. ìƒˆìš°ì “ 1í°ìˆ  (15g)#3. ì„¤íƒ• 1ì‘ì€ìˆ  (5g) #4. ë¬¼ 1/3ì»µ (60ml)#5. ì°¸ê¸°ë¦„ 1í°ìˆ  (15ml)#6. ì°¸ê¹¨ 1ì‘ì€ìˆ  (5g)#7. ëŒ€íŒŒ 40g",	"ë‹¬ê±€,ìƒˆìš°ì “,ì„¤íƒ•,ì°¸ê¸°ë¦„,ì°¸ê¹¨,ëŒ€íŒŒ",	"https://www.youtube.com/watch?v=_H64Kz7Mgz4",	2);
 		
 		new RecipeInterface(f[0]);
 		MainFrame mainFrame = new MainFrame();
