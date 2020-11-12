@@ -42,10 +42,7 @@ public class MainFrame extends JFrame{
 		
 		bSelectCook.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent e){
-				JButton btn = (JButton) e.getSource();
-				if(btn.getText().equals("요리 선택하기")) {
-					CookListFrame cookListFrame = new CookListFrame();
-				}
+				CookListFrame cookListFrame = new CookListFrame();
 			}
 		});;
 
@@ -53,6 +50,11 @@ public class MainFrame extends JFrame{
 		bSelectIngredient.setLocation(270,150);
 		bSelectIngredient.setSize(250,50);
 		bSelectIngredient.setBackground(Color.WHITE);
+		bSelectIngredient.addActionListener(new ActionListener(){ 
+			public void actionPerformed(ActionEvent e){
+				FoodSelectInterface fSI = new FoodSelectInterface();
+			}
+		});;
 
 		JButton bCancel = new JButton("  종  료  ");
 		bCancel.setLocation(270,250);
