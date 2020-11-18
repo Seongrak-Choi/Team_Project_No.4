@@ -39,7 +39,6 @@ public class ReportFrame extends JFrame {
 		reportBtn.setSize(100, 30);
 		reportBtn.setLocation(250, 500);
 		reportBtn.setBackground(Color.WHITE);
-		c.add(reportBtn);
 		reportBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BufferedWriter writer = null;
@@ -60,8 +59,9 @@ public class ReportFrame extends JFrame {
 				}
 			}
 		});
+		c.add(reportBtn);
 
-		JButton backBtn = new JButton("뒤로 가기"); // 신고 버튼
+		JButton backBtn = new JButton("취소"); // 신고 버튼
 		backBtn.setSize(100, 30);
 		backBtn.setLocation(400, 500);
 		backBtn.setBackground(Color.WHITE);
