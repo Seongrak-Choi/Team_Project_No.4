@@ -48,7 +48,7 @@ public class ReportFrame extends JFrame {
 		backBtn.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent e){
 
-					RecipeInterface rI = new RecipeInterface(food);
+					dispose();
 			}
 		});
 		c.add(backBtn);

@@ -17,7 +17,7 @@ public class FoodSelectInterface extends JFrame {
 			{ false, "재료31" }, { false, "재료32" }, { false, "재료33" }, { false, "재료34" }, { false, "재료35" },
 			{ false, "재료36" }, { false, "재료37" }, { false, "재료38" }, { false, "재료39" }, { false, "재료40" },
 			{ false, "재료41" }, { false, "재료42" }, { false, "재료43" }, { false, "재료44" }, { false, "재료45" },
-			{ false, "재료46" },
+			{ false, "재료46" }
 
 	};
 	private String[] avi = { "영상1" , "영상2", "영상3", "영상4", "영상5", "영상6", "영상7",
@@ -89,7 +89,7 @@ public class FoodSelectInterface extends JFrame {
 		frame.setVisible(true);
 		frame.setSize(800, 600);
 		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
