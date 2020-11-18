@@ -1,57 +1,84 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class ReportFrame extends JFrame {
-	private Image backgroundImage = new ImageIcon("src/image/image.png").getImage();
+	int reportNo = 1;
+	JTextArea reportCon =null;
+	Food f = null;
 
 	public ReportFrame(Food food) {
-		setTitle("πÈπŸ±∏¥œ");
+		f = food;
+		setTitle("Î∞±Î∞îÍµ¨Îãà");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800,600);
+		setSize(800, 600);
 		setVisible(true);
-		//setResizable(false); //«¡∑π¿” ≈©±‚ ∞Ì¡§
+		// setResizable(false); //ÌîÑÎ†àÏûÑ ÌÅ¨Í∏∞ Í≥†Ï†ï
 		Container c = getContentPane();
 		c.setLayout(null);
-		String label = food.getName() + " Ω≈∞Ì»≠∏È";
+		c.setBackground(Color.ORANGE);
+		String label = food.getName() + " Ïã†Í≥†ÌôîÎ©¥";
 		JLabel title = new JLabel(label);
-		title.setLocation(50,15);
-		title.setSize(200,30);
+		title.setLocation(50, 15);
+		title.setSize(200, 30);
 		c.add(title);
-		JPanel panel = new JPanel() {
-			// πË∞Ê¿ÃπÃ¡ˆøÕ πÿ ∂Û¿Œ¿ª ±◊∏Æ±‚ ¿ß«— paintComponent()∏ﬁº“µÂ
-			public void paintComponent(Graphics g) {
-				g.drawImage(backgroundImage, 0, 0, 800, 600, null);
-				Graphics2D g2 = (Graphics2D) g;
-				g2.setStroke(new BasicStroke(1, Font.BOLD, 0));
-				g2.drawLine(0, 530, 800, 530);
-			}
-		};
 
 		JTextArea reportContent = new JTextArea();
-		reportContent.setLocation(50,50 );
+		reportContent.setLocation(50, 50);
 		reportContent.setSize(650, 400);
 		c.add(reportContent);
 		reportContent.setBorder(new LineBorder(Color.BLACK));
+		reportCon = reportContent;
 		
-		JButton reportdBtn = new JButton("Ω≈∞Ì"); //ø‰∏Æ√ﬂ√µ πˆ∆∞
-		reportdBtn.setSize(100,30);
-		reportdBtn.setLocation(250, 500);
-		c.add(reportdBtn);
-		
-		JButton backBtn = new JButton("µ⁄∑Œ ∞°±‚"); //Ω≈∞Ì πˆ∆∞
-		backBtn.setSize(100,30);
-		backBtn.setLocation(400, 500);
-		backBtn.addActionListener(new ActionListener(){ 
-			public void actionPerformed(ActionEvent e){
+		JButton reportBtn = new JButton("Ïã†Í≥†"); // ÏöîÎ¶¨Ï∂îÏ≤ú Î≤ÑÌäº
+		reportBtn.setSize(100, 30);
+		reportBtn.setLocation(250, 500);
+		reportBtn.setBackground(Color.WHITE);
+		c.add(reportBtn);
+		reportBtn.addActionListener(new MyActionListener());
 
-					RecipeInterface rI = new RecipeInterface(food);
+		JButton backBtn = new JButton("Îí§Î°ú Í∞ÄÍ∏∞"); // Ïã†Í≥† Î≤ÑÌäº
+		backBtn.setSize(100, 30);
+		backBtn.setLocation(400, 500);
+		backBtn.setBackground(Color.WHITE);
+		backBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
 			}
 		});
 		c.add(backBtn);
 	}
 
+	class MyActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			JButton b = (JButton) e.getSource();
+			if (b.getText().equals("Ïã†Í≥†")) {
+				BufferedWriter writer = null;
+				try {
+					writer = new BufferedWriter(new OutputStreamWriter(
+							new FileOutputStream("c:/Users/public/" + f.getName() + "report" + reportNo + ".txt")));
+					writer.write(reportCon.getText());
+					reportNo++;
+					writer.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}finally {
+					dispose();
+				}
+			}
+		}
+	}
 }
