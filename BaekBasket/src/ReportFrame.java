@@ -13,11 +13,8 @@ import javax.swing.border.LineBorder;
 
 public class ReportFrame extends JFrame {
 	int reportNo = 1;
-	JTextArea reportCon =null;
-	Food f = null;
 
 	public ReportFrame(Food food) {
-		f = food;
 		setTitle("백바구니");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 600);
@@ -37,14 +34,32 @@ public class ReportFrame extends JFrame {
 		reportContent.setSize(650, 400);
 		c.add(reportContent);
 		reportContent.setBorder(new LineBorder(Color.BLACK));
-		reportCon = reportContent;
-		
+
 		JButton reportBtn = new JButton("신고"); // 요리추천 버튼
 		reportBtn.setSize(100, 30);
 		reportBtn.setLocation(250, 500);
 		reportBtn.setBackground(Color.WHITE);
 		c.add(reportBtn);
-		reportBtn.addActionListener(new MyActionListener());
+		reportBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BufferedWriter writer = null;
+				try {
+					writer = new BufferedWriter(new OutputStreamWriter(
+							new FileOutputStream("c:/Users/public/" + food.getName() + "report" + reportNo + ".txt")));
+					writer.write(reportContent.getText());
+					reportNo++;
+					writer.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} finally {
+					dispose();
+				}
+			}
+		});
 
 		JButton backBtn = new JButton("뒤로 가기"); // 신고 버튼
 		backBtn.setSize(100, 30);
@@ -56,29 +71,5 @@ public class ReportFrame extends JFrame {
 			}
 		});
 		c.add(backBtn);
-	}
-
-	class MyActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			JButton b = (JButton) e.getSource();
-			if (b.getText().equals("신고")) {
-				BufferedWriter writer = null;
-				try {
-					writer = new BufferedWriter(new OutputStreamWriter(
-							new FileOutputStream("c:/Users/public/" + f.getName() + "report" + reportNo + ".txt")));
-					writer.write(reportCon.getText());
-					reportNo++;
-					writer.close();
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}finally {
-					dispose();
-				}
-			}
-		}
 	}
 }
