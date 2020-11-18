@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="C:/Users/godgo/OneDrive/바탕 화면/team_pro/DJNativeSwing 라이브러리/DJNativeSwing.jar"/>
 	<classpathentry kind="lib" path="C:/Users/godgo/OneDrive/바탕 화면/team_pro/DJNativeSwing 라이브러리/DJNativeSwing-SWT.jar"/>
 	<classpathentry kind="lib" path="C:/Users/godgo/OneDrive/바탕 화면/team_pro/DJNativeSwing 라이브러리/swt-4.3-win32-win32-x86_64.jar"/>
+	<classpathentry kind="lib" path="C:/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

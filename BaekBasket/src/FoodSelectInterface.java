@@ -7,31 +7,31 @@ import javax.swing.text.StyledEditorKit.BoldAction;
 
 public class FoodSelectInterface extends JFrame {
 	private Image backgroundImage = new ImageIcon("src/image/image.png").getImage();
-	private Object[] column = { " ", "Àç·á" };
-	private Object[][] raw = { { false, "Àç·á1" }, { false, "Àç·á2" }, { false, "Àç·á3" }, { false, "Àç·á4" },
-			{ false, "Àç·á5" }, { false, "Àç·á6" }, { false, "Àç·á7" }, { false, "Àç·á8" }, { false, "Àç·á9" }, { false, "Àç·á10" },
-			{ false, "Àç·á11" }, { false, "Àç·á12" }, { false, "Àç·á13" }, { false, "Àç·á14" }, { false, "Àç·á15" },
-			{ false, "Àç·á16" }, { false, "Àç·á17" }, { false, "Àç·á18" }, { false, "Àç·á19" }, { false, "Àç·á20" },
-			{ false, "Àç·á21" }, { false, "Àç·á22" }, { false, "Àç·á23" }, { false, "Àç·á24" }, { false, "Àç·á25" },
-			{ false, "Àç·á26" }, { false, "Àç·á27" }, { false, "Àç·á28" }, { false, "Àç·á29" }, { false, "Àç·á30" },
-			{ false, "Àç·á31" }, { false, "Àç·á32" }, { false, "Àç·á33" }, { false, "Àç·á34" }, { false, "Àç·á35" },
-			{ false, "Àç·á36" }, { false, "Àç·á37" }, { false, "Àç·á38" }, { false, "Àç·á39" }, { false, "Àç·á40" },
-			{ false, "Àç·á41" }, { false, "Àç·á42" }, { false, "Àç·á43" }, { false, "Àç·á44" }, { false, "Àç·á45" },
-			{ false, "Àç·á46" },
+	private Object[] column = { " ", "ì¬ë£Œ" };
+	private Object[][] raw = { { false, "ì¬ë£Œ1" }, { false, "ì¬ë£Œ2" }, { false, "ì¬ë£Œ3" }, { false, "ì¬ë£Œ4" },
+			{ false, "ì¬ë£Œ5" }, { false, "ì¬ë£Œ6" }, { false, "ì¬ë£Œ7" }, { false, "ì¬ë£Œ8" }, { false, "ì¬ë£Œ9" }, { false, "ì¬ë£Œ10" },
+			{ false, "ì¬ë£Œ11" }, { false, "ì¬ë£Œ12" }, { false, "ì¬ë£Œ13" }, { false, "ì¬ë£Œ14" }, { false, "ì¬ë£Œ15" },
+			{ false, "ì¬ë£Œ16" }, { false, "ì¬ë£Œ17" }, { false, "ì¬ë£Œ18" }, { false, "ì¬ë£Œ19" }, { false, "ì¬ë£Œ20" },
+			{ false, "ì¬ë£Œ21" }, { false, "ì¬ë£Œ22" }, { false, "ì¬ë£Œ23" }, { false, "ì¬ë£Œ24" }, { false, "ì¬ë£Œ25" },
+			{ false, "ì¬ë£Œ26" }, { false, "ì¬ë£Œ27" }, { false, "ì¬ë£Œ28" }, { false, "ì¬ë£Œ29" }, { false, "ì¬ë£Œ30" },
+			{ false, "ì¬ë£Œ31" }, { false, "ì¬ë£Œ32" }, { false, "ì¬ë£Œ33" }, { false, "ì¬ë£Œ34" }, { false, "ì¬ë£Œ35" },
+			{ false, "ì¬ë£Œ36" }, { false, "ì¬ë£Œ37" }, { false, "ì¬ë£Œ38" }, { false, "ì¬ë£Œ39" }, { false, "ì¬ë£Œ40" },
+			{ false, "ì¬ë£Œ41" }, { false, "ì¬ë£Œ42" }, { false, "ì¬ë£Œ43" }, { false, "ì¬ë£Œ44" }, { false, "ì¬ë£Œ45" },
+			{ false, "ì¬ë£Œ46" },
 
 	};
-	private String[] avi = { "¿µ»ó1" , "¿µ»ó2", "¿µ»ó3", "¿µ»ó4", "¿µ»ó5", "¿µ»ó6", "¿µ»ó7",
-			 "¿µ»ó8" , "¿µ»ó9", "¿µ»ó10", "¿µ»ó11", "¿µ»ó12", "¿µ»ó13", "¿µ»ó14",
-			 "¿µ»ó15" , "¿µ»ó16", "¿µ»ó17", "¿µ»ó18", "¿µ»ó19", "¿µ»ó20", "¿µ»ó21",
-			 "¿µ»ó22" , "¿µ»ó23", "¿µ»ó24", "¿µ»ó25", "¿µ»ó26", "¿µ»ó27", "¿µ»ó28"
+	private String[] avi = { "ì˜ìƒ1" , "ì˜ìƒ2", "ì˜ìƒ3", "ì˜ìƒ4", "ì˜ìƒ5", "ì˜ìƒ6", "ì˜ìƒ7",
+			 "ì˜ìƒ8" , "ì˜ìƒ9", "ì˜ìƒ10", "ì˜ìƒ11", "ì˜ìƒ12", "ì˜ìƒ13", "ì˜ìƒ14",
+			 "ì˜ìƒ15" , "ì˜ìƒ16", "ì˜ìƒ17", "ì˜ìƒ18", "ì˜ìƒ19", "ì˜ìƒ20", "ì˜ìƒ21",
+			 "ì˜ìƒ22" , "ì˜ìƒ23", "ì˜ìƒ24", "ì˜ìƒ25", "ì˜ìƒ26", "ì˜ìƒ27", "ì˜ìƒ28"
 			};
 
 	public FoodSelectInterface() {
-		// ¸ŞÀÎ ÇÁ·¹ÀÓ
+		// ë©”ì¸ í”„ë ˆì„
 		JFrame frame = new JFrame();
-		// ¸ŞÀÎ ÆĞ³Î
+		// ë©”ì¸ íŒ¨ë„
 		JPanel panel = new JPanel() {
-			// ¹è°æÀÌ¹ÌÁö¿Í ¹Ø ¶óÀÎÀ» ±×¸®±â À§ÇÑ paintComponent()¸Ş¼Òµå
+			// ë°°ê²½ì´ë¯¸ì§€ì™€ ë°‘ ë¼ì¸ì„ ê·¸ë¦¬ê¸° ìœ„í•œ paintComponent()ë©”ì†Œë“œ
 			public void paintComponent(Graphics g) {
 				g.drawImage(backgroundImage, 0, 0, 800, 600, null);
 				Graphics2D g2 = (Graphics2D) g;
@@ -45,23 +45,23 @@ public class FoodSelectInterface extends JFrame {
 
 		frame.add(panel);
 
-		// °Ë»ö¹öÆ°
-		JButton btn1 = new JButton("°Ë»ö");
+		// ê²€ìƒ‰ë²„íŠ¼
+		JButton btn1 = new JButton("ê²€ìƒ‰");
 		btn1.setLayout(null);
 		btn1.setSize(60, 20);
 		btn1.setLocation(660, 230);
 		btn1.setBackground(Color.white);
 		panel.add(btn1);
 
-		// µÚ·Î°¡±â ¹öÆ°
-		JButton btn2 = new JButton("µÚ·Î°¡±â");
+		// ë’¤ë¡œê°€ê¸° ë²„íŠ¼
+		JButton btn2 = new JButton("ë’¤ë¡œê°€ê¸°");
 		btn2.setLayout(null);
 		btn2.setSize(86, 20);
 		btn2.setLocation(635, 500);
 		btn2.setBackground(Color.white);
 		panel.add(btn2);
 
-		// Àç·á¼±ÅÃ Å×ÀÌºí ±¸¼º
+		// ì¬ë£Œì„ íƒ í…Œì´ë¸” êµ¬ì„±
 		DefaultTableModel dtm = new DefaultTableModel(raw, column);
 		JTable table = new JTable(dtm);
 		table.setBounds(20, 20, 700, 200);
@@ -71,12 +71,12 @@ public class FoodSelectInterface extends JFrame {
 		box.setHorizontalAlignment(JLabel.CENTER);
 		table.getColumn(" ").setCellEditor(new DefaultCellEditor(box));
 
-		// Àç·á¼±ÅÃ Å×ÀÌºí¿¡ ½ºÅ©·Ñ ´Ş±â
+		// ì¬ë£Œì„ íƒ í…Œì´ë¸”ì— ìŠ¤í¬ë¡¤ ë‹¬ê¸°
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(table.getX(), table.getY(), table.getWidth(), table.getHeight());
 		panel.add(scrollPane, "Center");
 
-		// ¿µ»ó Å×ÀÌºí ¸®½ºÆ®
+		// ì˜ìƒ í…Œì´ë¸” ë¦¬ìŠ¤íŠ¸
 		JList list = new JList(avi);
 		list.setBounds(20, 290, 700, 200);
 		JScrollPane sp = new JScrollPane(list);
@@ -84,7 +84,7 @@ public class FoodSelectInterface extends JFrame {
 		panel.add(sp, "Center");
 		
 		
-		frame.setTitle("¹é¹Ù±¸´Ï");
+		frame.setTitle("ë°±ë°”êµ¬ë‹ˆ");
 		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.setSize(800, 600);
@@ -98,7 +98,7 @@ public class FoodSelectInterface extends JFrame {
 
 	}
 
-	// Àç·á¼±ÅÃ Å×ÀÌºí¿¡ ´ãÀ» Ã¼Å©¹Ú½º ±¸Çö
+	// ì¬ë£Œì„ íƒ í…Œì´ë¸”ì— ë‹´ì„ ì²´í¬ë°•ìŠ¤ êµ¬í˜„
 	DefaultTableCellRenderer dcr = new DefaultTableCellRenderer() {
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 				int row, int column) {

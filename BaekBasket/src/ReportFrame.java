@@ -19,7 +19,6 @@ public class ReportFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 600);
 		setVisible(true);
-		// setResizable(false); //프레임 크기 고정
 		Container c = getContentPane();
 		c.setLayout(null);
 		c.setBackground(Color.ORANGE);
@@ -35,7 +34,7 @@ public class ReportFrame extends JFrame {
 		c.add(reportContent);
 		reportContent.setBorder(new LineBorder(Color.BLACK));
 
-		JButton reportBtn = new JButton("신고"); // 요리추천 버튼
+		JButton reportBtn = new JButton("신고");
 		reportBtn.setSize(100, 30);
 		reportBtn.setLocation(250, 500);
 		reportBtn.setBackground(Color.WHITE);
@@ -61,7 +60,7 @@ public class ReportFrame extends JFrame {
 		});
 		c.add(reportBtn);
 
-		JButton backBtn = new JButton("취소"); // 신고 버튼
+		JButton backBtn = new JButton("취소");
 		backBtn.setSize(100, 30);
 		backBtn.setLocation(400, 500);
 		backBtn.setBackground(Color.WHITE);

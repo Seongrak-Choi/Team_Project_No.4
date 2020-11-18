@@ -12,11 +12,11 @@ public class RecipeInterface extends JFrame{
 
 	
 	public RecipeInterface(Food food) {
-		setTitle("¹é¹Ù±¸´Ï");
+		setTitle("ë°±ë°”êµ¬ë‹ˆ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800,600);
 		setVisible(true);
-		//setResizable(false); //ÇÁ·¹ÀÓ Å©±â °íÁ¤
+		//setResizable(false); //í”„ë ˆì„ í¬ê¸° ê³ ì •
 		Container c = getContentPane();
 		c.setLayout(null);
 		Food chosenFood = food;
@@ -26,18 +26,18 @@ public class RecipeInterface extends JFrame{
 		String[] recipeArray =chosenFood.getRecipe().split("#");
 		String[] ingredientArray=chosenFood.getIngredient().split("#");
 		String[] quantitativeArray=chosenFood.getQuanti().split("#");
-		JLabel foodName = new JLabel(chosenFood.getName()); //¿ä¸®ÀÇ ÀÌ¸§À» Ãâ·ÂÇÏ´Â Label
+		JLabel foodName = new JLabel(chosenFood.getName()); //ìš”ë¦¬ì˜ ì´ë¦„ì„ ì¶œë ¥í•˜ëŠ” Label
 		foodName.setLocation(20,1);
 		foodName.setSize(100,30);
 		c.add(foodName);
 		
 		
-		JButton recommendBtn = new JButton("¿ä¸® ÃßÃµ"); //¿ä¸®ÃßÃµ ¹öÆ°
+		JButton recommendBtn = new JButton("ìš”ë¦¬ ì¶”ì²œ"); //ìš”ë¦¬ì¶”ì²œ ë²„íŠ¼
 		recommendBtn.setSize(100,30);
 		recommendBtn.setLocation(470, 520);
 		c.add(recommendBtn);
 		
-		JButton reportBtn = new JButton("½Å °í"); //½Å°í ¹öÆ°
+		JButton reportBtn = new JButton("ì‹  ê³ "); //ì‹ ê³  ë²„íŠ¼
 		reportBtn.setSize(80,30);
 		reportBtn.setLocation(580, 520);
 			
@@ -49,47 +49,47 @@ public class RecipeInterface extends JFrame{
 		c.add(reportBtn);
 		
 		
-		JButton backBtn = new JButton("µÚ·Î °¡±â"); //½Å°í ¹öÆ°
+		JButton backBtn = new JButton("ë’¤ë¡œ ê°€ê¸°"); //ì‹ ê³  ë²„íŠ¼
 		backBtn.setSize(100,30);
 		backBtn.setLocation(670, 520);
 		backBtn.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent e) {
-					CookListFrame cL = new CookListFrame();
+					dispose();
 			}
 		});;
 		c.add(backBtn);
 		
 		
-		JTextArea quantitativeList = new JTextArea(); //·¹½ÃÇÇ°¡ ´ã±æ JTextArea
-		quantitativeList.setLineWrap(true); // size¸¦ ¹ş¾î³¯ °æ¿ì ÀÚµ¿ ÁÙ¹Ù²Ş
+		JTextArea quantitativeList = new JTextArea(); //ë ˆì‹œí”¼ê°€ ë‹´ê¸¸ JTextArea
+		quantitativeList.setLineWrap(true); // sizeë¥¼ ë²—ì–´ë‚  ê²½ìš° ìë™ ì¤„ë°”ê¿ˆ
 		quantitativeList.setEditable(false);
-		for(int i=0;i<quantitativeArray.length;i++)  //recipeArray ±æÀÌ ¸¸Å­ JTextArea¿¡ ³Ö¾îÁØ´Ù.
+		for(int i=0;i<quantitativeArray.length;i++)  //recipeArray ê¸¸ì´ ë§Œí¼ JTextAreaì— ë„£ì–´ì¤€ë‹¤.
 			quantitativeList.append(quantitativeArray[i]+"\n\n");
 	
-		JScrollPane quantitativeScrollPane = new JScrollPane(quantitativeList); // ½ºÅ©·Ñ¹Ù°¡ ´Ş·ÁÀÖ´Â JScrollPane¿¡ JTextArea recipeList¸¦ ´Ş¾ÆÁØ´Ù.
-		quantitativeScrollPane.setLocation(520,30); // JScrollPane spÀÇ À§Ä¡¸¦ ¼³Á¤ÇÑ´Ù.
-		quantitativeScrollPane.setSize(250,240); // JScrollPane spÀÇ Å©±â¸¦ ¼³Á¤ÇÑ´Ù.
+		JScrollPane quantitativeScrollPane = new JScrollPane(quantitativeList); // ìŠ¤í¬ë¡¤ë°”ê°€ ë‹¬ë ¤ìˆëŠ” JScrollPaneì— JTextArea recipeListë¥¼ ë‹¬ì•„ì¤€ë‹¤.
+		quantitativeScrollPane.setLocation(520,30); // JScrollPane spì˜ ìœ„ì¹˜ë¥¼ ì„¤ì •í•œë‹¤.
+		quantitativeScrollPane.setSize(250,240); // JScrollPane spì˜ í¬ê¸°ë¥¼ ì„¤ì •í•œë‹¤.
 		c.add(quantitativeScrollPane);
 		
 					
-		JTextArea recipeList = new JTextArea(); //·¹½ÃÇÇ°¡ ´ã±æ JTextArea
-		recipeList.setLineWrap(true); // size¸¦ ¹ş¾î³¯ °æ¿ì ÀÚµ¿ ÁÙ¹Ù²Ş
+		JTextArea recipeList = new JTextArea(); //ë ˆì‹œí”¼ê°€ ë‹´ê¸¸ JTextArea
+		recipeList.setLineWrap(true); // sizeë¥¼ ë²—ì–´ë‚  ê²½ìš° ìë™ ì¤„ë°”ê¿ˆ
 		recipeList.setEditable(false);
-		for(int i=0;i<recipeArray.length;i++)  //recipeArray ±æÀÌ ¸¸Å­ JTextArea¿¡ ³Ö¾îÁØ´Ù.
+		for(int i=0;i<recipeArray.length;i++)  //recipeArray ê¸¸ì´ ë§Œí¼ JTextAreaì— ë„£ì–´ì¤€ë‹¤.
 			recipeList.append(recipeArray[i]+"\n\n");
 	
-		JScrollPane recipeScrollPane = new JScrollPane(recipeList); // ½ºÅ©·Ñ¹Ù°¡ ´Ş·ÁÀÖ´Â JScrollPane¿¡ JTextArea recipeList¸¦ ´Ş¾ÆÁØ´Ù.
-		recipeScrollPane.setLocation(20,30); // JScrollPane spÀÇ À§Ä¡¸¦ ¼³Á¤ÇÑ´Ù.
-		recipeScrollPane.setSize(480,240); // JScrollPane spÀÇ Å©±â¸¦ ¼³Á¤ÇÑ´Ù.
+		JScrollPane recipeScrollPane = new JScrollPane(recipeList); // ìŠ¤í¬ë¡¤ë°”ê°€ ë‹¬ë ¤ìˆëŠ” JScrollPaneì— JTextArea recipeListë¥¼ ë‹¬ì•„ì¤€ë‹¤.
+		recipeScrollPane.setLocation(20,30); // JScrollPane spì˜ ìœ„ì¹˜ë¥¼ ì„¤ì •í•œë‹¤.
+		recipeScrollPane.setSize(480,240); // JScrollPane spì˜ í¬ê¸°ë¥¼ ì„¤ì •í•œë‹¤.
 		c.add(recipeScrollPane);
 		
 		
-		JPanel ingredientPane =new JPanel();    // Àç·á¼±ÅÃ ÇÒ ¼ö ÀÖ´Â ¹öÆ°ÀÌ ´Ş¸± panel
+		JPanel ingredientPane =new JPanel();    // ì¬ë£Œì„ íƒ í•  ìˆ˜ ìˆëŠ” ë²„íŠ¼ì´ ë‹¬ë¦´ panel
 		ingredientPane.setSize(250,250);
 		ingredientPane.setLocation(520,10);
 		ingredientPane.setLayout(new GridLayout(ingredientArray.length,1));
 		
-		JScrollPane ingredientScrollPane = new JScrollPane(ingredientPane); //ingredientPaneÀ» ºÎÂø½ÃÅ³ ½ºÅ©·Ñ ÆÒ
+		JScrollPane ingredientScrollPane = new JScrollPane(ingredientPane); //ingredientPaneì„ ë¶€ì°©ì‹œí‚¬ ìŠ¤í¬ë¡¤ íŒ¬
 		ingredientScrollPane.setSize(250,200);
 		ingredientScrollPane.setLocation(520, 280);
 		c.add(ingredientScrollPane);
@@ -101,7 +101,7 @@ public class RecipeInterface extends JFrame{
 			ingredientPane.add(ingredientBtn[i]);
 		}
 		
-		JButton basketAddBtn = new JButton("Àå¹Ù±¸´Ï Ãß°¡");
+		JButton basketAddBtn = new JButton("ì¥ë°”êµ¬ë‹ˆ ì¶”ê°€");
 		basketAddBtn.setLocation(650, 485);
 		basketAddBtn.setSize(120,30);
 		
