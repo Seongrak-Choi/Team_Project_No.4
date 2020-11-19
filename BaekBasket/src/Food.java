@@ -1,18 +1,17 @@
-
 public class Food {
 	
-	int categoryNo; // ¿ä¸®¿¡ ÇØ´çÇÏ´Â Ä«Å×°í¸® ³Ñ¹ö [0=¾ÈÁÖ&°£½Ä, 1=Âî°³&±¹, 2=¹İÂù, 3=¹ä, 4=°£½Ä&±âÅ¸]
-	int recommend; // ÃßÃµ ¼ö
-	int id; // ¿ä¸® ¾ÆÀÌµğ
-	String link; //À¯Æ©ºê ¸µÅ©
-	String name; //¿ä¸® ÀÌ¸§
-	String ingredient; // Àç·á
-	String quantitative;//Á¤·®
-	String recipe; // ¿ä¸® Á¦Á¶¹ı
-	String[] recipeArray; // Á¦Á¶¹ıÀ» ÁöÁ¤ÇÑ ¹®ÀÚ·Î ³ª´©¾î ÀúÀåÇÏ°Ô µÉ ¹è¿­ [(split()ÇÔ¼ö »ç¿ë]
-	String[] ingreientArray; //Àç·áµéÀ» ÁöÁ¤ÇÑ ¹®ÀÚ·Î ³ª´©¾î ÀúÀåÇÏ°Ô µÉ ¹è¿­ [(split()ÇÔ¼ö »ç¿ë]
+	int categoryNo; // ìš”ë¦¬ì— í•´ë‹¹í•˜ëŠ” ì¹´í…Œê³ ë¦¬ ë„˜ë²„ [0=ì•ˆì£¼&ê°„ì‹, 1=ì°Œê°œ&êµ­, 2=ë°˜ì°¬, 3=ë°¥, 4=ê°„ì‹&ê¸°íƒ€]
+	int recommend; // ì¶”ì²œ ìˆ˜
+	int id; // ìš”ë¦¬ ì•„ì´ë””
+	String link; //ìœ íŠœë¸Œ ë§í¬
+	String name; //ìš”ë¦¬ ì´ë¦„
+	String ingredient; // ì¬ë£Œ
+	String quantitative;//ì •ëŸ‰
+	String recipe; // ìš”ë¦¬ ì œì¡°ë²•
+	String[] recipeArray; // ì œì¡°ë²•ì„ ì§€ì •í•œ ë¬¸ìë¡œ ë‚˜ëˆ„ì–´ ì €ì¥í•˜ê²Œ ë  ë°°ì—´ [(split()í•¨ìˆ˜ ì‚¬ìš©]
+	String[] ingreientArray; //ì¬ë£Œë“¤ì„ ì§€ì •í•œ ë¬¸ìë¡œ ë‚˜ëˆ„ì–´ ì €ì¥í•˜ê²Œ ë  ë°°ì—´ [(split()í•¨ìˆ˜ ì‚¬ìš©]
 	
-	public Food(int id,String name, String recipe, String quantitative, String ingreient,String link,int categoryNo) {  // Food Å¬·¡½º »ı¼ºÀÚ
+	public Food(int id,String name, String recipe, String quantitative, String ingreient,String link,int categoryNo) {  // Food í´ë˜ìŠ¤ ìƒì„±ì
 		this.name=name;
 		this.categoryNo=categoryNo;
 		this.ingredient=ingreient;
@@ -20,8 +19,8 @@ public class Food {
 		this.id=id;
 		this.quantitative=quantitative;
 		
-		recipeArray=recipe.split("#");  // ÇÑÁÙ·Î ¹ŞÀº ·¹½ÃÇÇ¸¦ #À¸·Î ³ª´©¾î ¹è¿­À» »ı¼ºÇØÁØ´Ù.
-		ingreientArray=ingredient.split("#"); // ÇÑÁÙ·Î ¹ŞÀº Àç·áµéÀ» #À¸·Î ³ª´©¾î ¹è¿­À» »ı¼ºÇØÁØ´Ù.
+		recipeArray=recipe.split("#");  // í•œì¤„ë¡œ ë°›ì€ ë ˆì‹œí”¼ë¥¼ #ìœ¼ë¡œ ë‚˜ëˆ„ì–´ ë°°ì—´ì„ ìƒì„±í•´ì¤€ë‹¤.
+		ingreientArray=ingredient.split("#"); // í•œì¤„ë¡œ ë°›ì€ ì¬ë£Œë“¤ì„ #ìœ¼ë¡œ ë‚˜ëˆ„ì–´ ë°°ì—´ì„ ìƒì„±í•´ì¤€ë‹¤.
 	}
 	
 	public String getIngredient() {

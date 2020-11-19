@@ -1,56 +1,57 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.event.*;
 import javax.swing.*;
 
 //import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 
 public class RecipeInterface extends JFrame{
-	
-	
 
-	
+	Food chosenFood;
+	String[] recipeArray;
+	String[] ingredientArray;
+	String[] quantitativeArray;
+	JCheckBox[] ingredientBtn;
+
 	public RecipeInterface(Food food) {
-		setTitle("¹é¹Ù±¸´Ï");
+		setTitle("ë°±ë°”êµ¬ë‹ˆ");
 		setSize(800,600);
 		setVisible(true);
-		//setResizable(false); //ÇÁ·¹ÀÓ Å©±â °íÁ¤
+		//setResizable(false); //í”„ë ˆì„ í¬ê¸° ê³ ì •
 		Container c = getContentPane();
 		c.setLayout(null);
-		Food chosenFood = food;
+		chosenFood = food;
 		c.setBackground(Color.white);
-		
 
-		String[] recipeArray =chosenFood.getRecipe().split("#");
-		String[] ingredientArray=chosenFood.getIngredient().split("#");
-		String[] quantitativeArray=chosenFood.getQuanti().split("#");
-		JLabel foodName = new JLabel(chosenFood.getName()); //¿ä¸®ÀÇ ÀÌ¸§À» Ãâ·ÂÇÏ´Â Label
+
+		recipeArray =chosenFood.getRecipe().split("#");  //í•œì¤„ì˜ stringìœ¼ë¡œ ëœ ë ˆì‹œí”¼ë¥¼ #ë§ˆë‹¤ ëŠì–´ì„œ stringë°°ì—´ì„ ë§Œë“¤ì–´ì¤€ë‹¤. 
+		ingredientArray=chosenFood.getIngredient().split("#"); //í•œì¤„ì˜ stringìœ¼ë¡œ ëœ ì¬ë£Œë¥¼ #ë§ˆë‹¤ ëŠì–´ì„œ stringë°°ì—´ì„ ë§Œë“¤ì–´ì¤€ë‹¤. 
+		quantitativeArray=chosenFood.getQuanti().split("#"); //í•œì¤„ì˜ stringìœ¼ë¡œ ëœ ì •ëŸ‰ì„ #ë§ˆë‹¤ ëŠì–´ì„œ stringë°°ì—´ì„ ë§Œë“¤ì–´ì¤€ë‹¤. 
+		JLabel foodName = new JLabel(chosenFood.getName()); //ìš”ë¦¬ì˜ ì´ë¦„ì„ ì¶œë ¥í•˜ëŠ” Label
 		foodName.setLocation(20,1);
 		foodName.setSize(100,30);
 		c.add(foodName);
-		
-		
-		JButton recommendBtn = new JButton("¿ä¸® ÃßÃµ"); //¿ä¸®ÃßÃµ ¹öÆ°
+
+
+		JButton recommendBtn = new JButton("ìš”ë¦¬ ì¶”ì²œ"); //ìš”ë¦¬ì¶”ì²œ ë²„íŠ¼
 		recommendBtn.setSize(100,30);
 		recommendBtn.setLocation(470, 520);
 		recommendBtn.setBackground(Color.WHITE);
 		c.add(recommendBtn);
-		
-		JButton reportBtn = new JButton("½Å °í"); //½Å°í ¹öÆ°
+
+		JButton reportBtn = new JButton("ì‹  ê³ "); //ì‹ ê³  ë²„íŠ¼
 		reportBtn.setSize(80,30);
 		reportBtn.setLocation(580, 520);
 		reportBtn.setBackground(Color.WHITE);
-			
+
 		reportBtn.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent e) {
-					ReportFrame report = new ReportFrame(food);
+				ReportFrame report = new ReportFrame(food);
 			}
 		});;
 		c.add(reportBtn);
-		
-		
-		JButton backBtn = new JButton("µÚ·Î °¡±â"); //µÚ·Î°¡±â ¹öÆ°
+
+
+		JButton backBtn = new JButton("ë’¤ë¡œ ê°€ê¸°"); //ë’¤ë¡œê°€ê¸° ë²„íŠ¼
 		backBtn.setSize(100,30);
 		backBtn.setLocation(670, 520);
 		backBtn.setBackground(Color.WHITE);
@@ -60,44 +61,46 @@ public class RecipeInterface extends JFrame{
 			}
 		});;
 		c.add(backBtn);
-		
-		
-		JTextArea quantitativeList = new JTextArea(); //·¹½ÃÇÇ°¡ ´ã±æ JTextArea
-		quantitativeList.setLineWrap(true); // size¸¦ ¹ş¾î³¯ °æ¿ì ÀÚµ¿ ÁÙ¹Ù²Ş
-		quantitativeList.setEditable(false); // »ç¿ëÀÚ°¡ textarea¸¦ ¼öÁ¤ ÇÒ ¼ö ¾ø°Ô ¼³Á¤.
-		for(int i=0;i<quantitativeArray.length;i++)  //recipeArray ±æÀÌ ¸¸Å­ JTextArea¿¡ ³Ö¾îÁØ´Ù.
+
+
+		JTextArea quantitativeList = new JTextArea(); //ë ˆì‹œí”¼ê°€ ë‹´ê¸¸ JTextArea
+		quantitativeList.setLineWrap(true); // sizeë¥¼ ë²—ì–´ë‚  ê²½ìš° ìë™ ì¤„ë°”ê¿ˆ
+		quantitativeList.setEditable(false); // ì‚¬ìš©ìê°€ textareaë¥¼ ìˆ˜ì • í•  ìˆ˜ ì—†ê²Œ ì„¤ì •.
+		for(int i=0;i<quantitativeArray.length;i++)  //recipeArray ê¸¸ì´ ë§Œí¼ JTextAreaì— ë„£ì–´ì¤€ë‹¤.
 			quantitativeList.append(quantitativeArray[i]+"\n\n");
-	
-		JScrollPane quantitativeScrollPane = new JScrollPane(quantitativeList); // ½ºÅ©·Ñ¹Ù°¡ ´Ş·ÁÀÖ´Â JScrollPane¿¡ JTextArea recipeList¸¦ ´Ş¾ÆÁØ´Ù.
-		quantitativeScrollPane.setLocation(520,30); // JScrollPane spÀÇ À§Ä¡¸¦ ¼³Á¤ÇÑ´Ù.
-		quantitativeScrollPane.setSize(250,240); // JScrollPane spÀÇ Å©±â¸¦ ¼³Á¤ÇÑ´Ù.
+
+		JScrollPane quantitativeScrollPane = new JScrollPane(quantitativeList); // ìŠ¤í¬ë¡¤ë°”ê°€ ë‹¬ë ¤ìˆëŠ” JScrollPaneì— JTextArea recipeListë¥¼ ë‹¬ì•„ì¤€ë‹¤.
+		quantitativeScrollPane.setLocation(520,30); // JScrollPane spì˜ ìœ„ì¹˜ë¥¼ ì„¤ì •í•œë‹¤.
+		quantitativeScrollPane.setSize(250,240); // JScrollPane spì˜ í¬ê¸°ë¥¼ ì„¤ì •í•œë‹¤.
 		c.add(quantitativeScrollPane);
-		
-					
-		JTextArea recipeList = new JTextArea(); //·¹½ÃÇÇ°¡ ´ã±æ JTextArea
-		recipeList.setLineWrap(true); // size¸¦ ¹ş¾î³¯ °æ¿ì ÀÚµ¿ ÁÙ¹Ù²Ş
-		recipeList.setEditable(false); //»ç¿ëÀÚ°¡ textareaÀ» ¼öÁ¤ ÇÒ ¼ö ¾ø°Ô ¸¸µë.
-		for(int i=0;i<recipeArray.length;i++)  //recipeArray ±æÀÌ ¸¸Å­ JTextArea¿¡ ³Ö¾îÁØ´Ù.
+
+
+		JTextArea recipeList = new JTextArea(); //ë ˆì‹œí”¼ê°€ ë‹´ê¸¸ JTextArea
+		recipeList.setLineWrap(true); // sizeë¥¼ ë²—ì–´ë‚  ê²½ìš° ìë™ ì¤„ë°”ê¿ˆ
+		recipeList.setEditable(false); //ì‚¬ìš©ìê°€ textareaì„ ìˆ˜ì • í•  ìˆ˜ ì—†ê²Œ ë§Œë“¬.
+		for(int i=0;i<recipeArray.length;i++)  //recipeArray ê¸¸ì´ ë§Œí¼ JTextAreaì— ë„£ì–´ì¤€ë‹¤.
 			recipeList.append(recipeArray[i]+"\n\n");
-	
-		JScrollPane recipeScrollPane = new JScrollPane(recipeList); // ½ºÅ©·Ñ¹Ù°¡ ´Ş·ÁÀÖ´Â JScrollPane¿¡ JTextArea recipeList¸¦ ´Ş¾ÆÁØ´Ù.
-		recipeScrollPane.setLocation(20,30); // JScrollPane spÀÇ À§Ä¡¸¦ ¼³Á¤ÇÑ´Ù.
-		recipeScrollPane.setSize(480,240); // JScrollPane spÀÇ Å©±â¸¦ ¼³Á¤ÇÑ´Ù.
+
+		JScrollPane recipeScrollPane = new JScrollPane(recipeList); // ìŠ¤í¬ë¡¤ë°”ê°€ ë‹¬ë ¤ìˆëŠ” JScrollPaneì— JTextArea recipeListë¥¼ ë‹¬ì•„ì¤€ë‹¤.
+		recipeScrollPane.setLocation(20,30); // JScrollPane spì˜ ìœ„ì¹˜ë¥¼ ì„¤ì •í•œë‹¤.
+		recipeScrollPane.setSize(480,240); // JScrollPane spì˜ í¬ê¸°ë¥¼ ì„¤ì •í•œë‹¤.
 		c.add(recipeScrollPane);
-		
-		
-		JPanel ingredientPane =new JPanel();    // Àç·á¼±ÅÃ ÇÒ ¼ö ÀÖ´Â ¹öÆ°ÀÌ ´Ş¸± panel
+
+
+		JPanel ingredientPane =new JPanel();    // ì¬ë£Œì„ íƒ í•  ìˆ˜ ìˆëŠ” ë²„íŠ¼ì´ ë‹¬ë¦´ panel
 		ingredientPane.setSize(250,250);
-		ingredientPane.setLocation(520,10);
+		//ingredientPane.setLocation(520,10);
 		ingredientPane.setLayout(new GridLayout(ingredientArray.length,1));
-		
-		JScrollPane ingredientScrollPane = new JScrollPane(ingredientPane); //ingredientPaneÀ» ºÎÂø½ÃÅ³ ½ºÅ©·Ñ ÆÒ
+
+		JScrollPane ingredientScrollPane = new JScrollPane(ingredientPane); //ingredientPaneì„ ë¶€ì°©ì‹œí‚¬ ìŠ¤í¬ë¡¤ íŒ¬
 		ingredientScrollPane.setSize(250,200);
 		ingredientScrollPane.setLocation(520, 280);
 		ingredientScrollPane.setBackground(Color.white);
 		c.add(ingredientScrollPane);
+
+
 		
-		JCheckBox[] ingredientBtn= new JCheckBox[ingredientArray.length];
+		ingredientBtn= new JCheckBox[ingredientArray.length];
 		for(int i=0;i<ingredientArray.length;i++) {
 			ingredientBtn[i]=new JCheckBox(ingredientArray[i]);
 			ingredientBtn[i].setBorderPainted(true);
@@ -105,27 +108,45 @@ public class RecipeInterface extends JFrame{
 			ingredientBtn[i].setForeground(Color.white);
 			ingredientPane.add(ingredientBtn[i]);
 		}
-		
-		JButton basketAddBtn = new JButton("Àå¹Ù±¸´Ï¿¡ Ãß°¡");
+
+		JButton basketAddBtn = new JButton("ì¥ë°”êµ¬ë‹ˆì— ì¶”ê°€");
 		basketAddBtn.setLocation(650, 485);
 		basketAddBtn.setSize(130,30);
 		basketAddBtn.setBackground(Color.WHITE);
 		basketAddBtn.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent e){
-				new ShoppingBasketFrame();
+				for(int i=0;i<ingredientArray.length;i++) {
+					int check=0;
+					if(ingredientBtn[i].isSelected()) {
+						for(int j=0;j<MainFrame.basketIndex;j++) {
+							if(MainFrame.basketArray[j].equals(ingredientArray[i])) {
+								System.out.println("ì„ íƒí•˜ì‹  ì¬ë£ŒëŠ” ì´ë¯¸ ì¥ë°”êµ¬ë‹ˆì— ìˆìŠµë‹ˆë‹¤.");
+								check=1;
+							}
+						}
+						if(check==0) {
+							MainFrame.basketArray[MainFrame.basketIndex]=ingredientArray[i];
+							MainFrame.basketIndex++;
+						}
+
+					}
+				}
+				for(int i=0;i<ingredientArray.length;i++) {
+					ingredientBtn[i].setSelected(false);
+				}
+				new ShoppingBasketFrame(ingredientArray);
 			}
 		});;
 		c.add(basketAddBtn);
-	
-	
+
+
 	}
-	public static void main(String[] args) {
-		Food[] f = new Food[100];
-		f[0]=new Food(1,	"¸ñ»ì½ºÅ×ÀÌÅ©Ä«·¹ ",	"1.°í±â »çÀÌÀÇ ÈûÁÙÀ» ²÷¾î ÁÖ°í ¼Ò±İ¡¤ÈÄÃß·Î ¹Ø°£ÇÕ´Ï´Ù. ¹Ø°£ÀÌ °í¸£°Ô µÉ ¼ö ÀÖµµ·Ï ¼ÕÀ¸·Î °¡º±°Ô °í±â¸¦ µÎµå·Á Áİ´Ï´Ù.#2. ÆÄÇÁ¸®Ä«¿Í ´ç±Ù, °¨ÀÚ¸¦ ¸Ô±â ÁÁÀº Å©±â·Î ½ä°í ¾çÆÄ¸¦ Ã¤½ç´Ï´Ù. ´Ü, ÅäÇÎ Àç·áÀÎ ÆÄÇÁ¸®Ä«´Â ÃëÇâ²¯ ¹Ù²ãµµ ÁÁÀº ¼±ÅÃ Àç·áÀÔ´Ï´Ù.#3. ÆÒ¿¡ ±â¸§À» µÎ¸£°í, ¸ñ»ìÀÌ ÁøÇÑ °¥»öÀÌ µÉ ¶§±îÁö °­ºÒ¿¡ ±Á½À´Ï´Ù. ³Ê¹« ÀÍÇû³ª ½ÍÀ» ¶§±îÁö ±Á´Â °ÍÀÌ Æ÷ÀÎÆ®¿¡¿ä.#4. Ã¤½ã ¾çÆÄ¸¦ ³Ö°í ÁßºÒ·Î ÁÙÀÎ µÚ, ÀÌÈÄ ´ç±Ù°ú °¨ÀÚ, ¹°À» ³Ö°í ²úÀÔ´Ï´Ù.#5. °¨ÀÚ¿Í ´ç±ÙÀÌ Àß ÀÍÀ¸¸é Ä«·¹ Á¶°¢À» ³Ö°í Àß Á£½À´Ï´Ù. °íÇüÄ«·¹´Â ÀÏ¹İ ¸¶Æ®¿¡¼­ ½±°Ô º¼ ¼ö ÀÖ´Â °íÃ¼Çü Ä«·¹ÀÔ´Ï´Ù.#6. ¸¶Áö¸·À¸·Î ÆÄÇÁ¸®Ä«¸¦ ³Ö°í ¼¯¾î Áİ´Ï´Ù.",	"µÅÁö ¸ñ»ì 300g (150*2)#²É¼Ò±İ ÇÑ²¿Áı#ÈÄÃå°¡·ç ÇÑ²¿Áı#ÆÄÇÁ¸®Ä« °¢ 50g¾¿#°¨ÀÚ 150g (1°³)#´ç±Ù 70g (1/4°³)#¾çÆÄ 200g (1°³)#½Ä¿ëÀ¯ 30ml (2Å«¼ú)#¹° 665ml (3ÄÅ ¹İ)#°íÇüÄ«·¹ 60g",	"µÅÁö°í±â#¼Ò±İ#ÈÄÃå°¡·ç#ÆÄÇÁ¸®Ä«#°¨ÀÚ#´ç±Ù#¾çÆÄ#½Ä¿ëÀ¯#°íÇüÄ«·¹",	"https://www.youtube.com/watch?v=wDXCxlcr3hY&t=8s",	2);
-		f[1]=new Food(2,	"ÃÊ°£´Ü ±èÄ¡Âî°³",	"1. ´ëÆÄ¿Í °íÃß´Â ¼Û¼Û ½ä¾î ÁØºñÇÕ´Ï´Ù. #2. ³¿ºñ¿¡ ¸ñ»ì°ú ½Ò¶ß¹°À» ³Ö°í ÃæºĞÈ÷ ²ú¿©, °í±â À°¼ö¸¦ ¿ì·Á³À´Ï´Ù. #3. °í±â À°¼ö°¡ ÃæºĞÈ÷ ¿ì·¯³ª¸é ±èÄ¡¿Í ´ÙÁø¸¶´ÃÀ» ³Ö½À´Ï´Ù. #4. ±¹¹°ÀÌ ²ú¾î¿À¸£¸é ´ëÆÄ¿Í °íÃß¸¦ ³Ö½À´Ï´Ù. #5. °íÃå°¡·ç¸¦ ³Ö°í Àß ¼¯½À´Ï´Ù. ±½Àº °íÃå°¡·ç¿Í °í¿î °íÃå°¡·ç¸¦ ¹İ¾¿ ¼¯¾î ³ÖÀ¸¸é ´õ¿í ÁÁ½À´Ï´Ù. #6. ±¹°£Àå°ú »õ¿ìÁ£À» ³Ö°í Àß Àú¾î Áİ´Ï´Ù. ",	"1. µÅÁö°í±â 120g#2. ½Ò¶ß¹° 380ml (¾à 2ÄÅ)#3. ÀÚ¸¥ ±èÄ¡ 150g#4. ´ÙÁø¸¶´Ã 30g (2Å«¼ú)#5. ´ëÆÄ 30g #6. Ã»¾ç°íÃß 10g#7. È«°íÃß 10g#8. °í¿î °íÃå°¡·ç 30g (2Å«¼ú)#9. ±½Àº °íÃå°¡·ç 30g (2Å«¼ú)#10. ±¹°£Àå 15ml (1Å«¼ú)#11. »õ¿ìÁ£ 15g (1Å«¼ú)",	"µÅÁö°í±â#½Ò¶ß¹°#±èÄ¡#¸¶´Ã#´ëÆÄ#°íÃß#°íÃå°¡·ç#±¹°£Àå#»õ¿ìÁ£",	"https://www.youtube.com/watch?v=DnQ09ZZCjCs&t=245s",	1);
-		f[2]=new Food(3,	"¶Ò¹è±â °è¶õÂò",	"1. ´ëÆÄ´Â ¼Û¼Û ½ä°í, »õ¿ìÁ£Àº Àß°Ô ´ÙÁ® ÁØºñÇÕ´Ï´Ù. #2. ¹Í½Ìº¼¿¡ ´Ş°¿°ú »õ¿ìÁ£, ¼³ÅÁÀ» ³Ö°í Àß ¼¯½À´Ï´Ù. #3. Àç·á°¡ Àß ¼¯ÀÌ¸é ¹°À» ³Ö°í ´Ù½Ã ÇÑ ¹ø Àß Àú¾îÁİ´Ï´Ù. #4. ¶Ò¹è±â¿¡ ´Ş°¿¹°À» ³Ö°í Áß¾àºÒ·Î °¡¿­ÇÕ´Ï´Ù. #5. ´Ş°¿ÀÌ ¶Ò¹è±â ¹Ù´Ú°ú °¡ÀåÀÚ¸®¿¡ ´­¾îºÙÁö ¾Êµµ·Ï, ¼ù°¡¶ôÀ¸·Î ¹Ù´ÚÀ» ±Ü¾î°¡¸ç ²ú¿©Áİ´Ï´Ù. #6. ´Ş°¿ÀÌ ¸ù±Û¸ù±ÛÇÏ°Ô ÀÍÀ¸¸é ´ëÆÄ¸¦ ³Ö°í ¼¯½À´Ï´Ù. #7. »çÀÌÁî°¡ ¸Â´Â ´Ù¸¥ ¶Ò¹è±â¸¦ µÚÁı¾î ¶Ñ²±Ã³·³ µ¤¾î ¾àºÒ·Î ÀÍÈü´Ï´Ù. #8. ´ëÆÄ, Âü±â¸§, ±ú¸¦ ´Ş°¿Âò À§¿¡ °í¸íÀ¸·Î »Ñ·Á ¸¶¹«¸®ÇÕ´Ï´Ù.",	"1. ´Ş°¿ 6°³ 324g#2. »õ¿ìÁ£ 1Å«¼ú (15g)#3. ¼³ÅÁ 1ÀÛÀº¼ú (5g) #4. ¹° 1/3ÄÅ (60ml)#5. Âü±â¸§ 1Å«¼ú (15ml)#6. Âü±ú 1ÀÛÀº¼ú (5g)#7. ´ëÆÄ 40g",	"´Ş°¿#»õ¿ìÁ£#¼³ÅÁ#Âü±â¸§#Âü±ú#´ëÆÄ",	"https://www.youtube.com/watch?v=_H64Kz7Mgz4",	2);
-		new RecipeInterface(f[0]);
-	}
-	
 
 }
+
+
+
+
+
+	
+

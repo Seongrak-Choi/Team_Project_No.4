@@ -9,20 +9,20 @@ public class ReportFrame extends JFrame {
 	private Image backgroundImage = new ImageIcon("src/image/image.png").getImage();
 
 	public ReportFrame(Food food) {
-		setTitle("¹é¹Ù±¸´Ï");
+		setTitle("ë°±ë°”êµ¬ë‹ˆ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800,600);
 		setVisible(true);
-		//setResizable(false); //ÇÁ·¹ÀÓ Å©±â °íÁ¤
+		//setResizable(false); //í”„ë ˆì„ í¬ê¸° ê³ ì •
 		Container c = getContentPane();
 		c.setLayout(null);
-		String label = food.getName() + " ½Å°íÈ­¸é";
+		String label = food.getName() + " ì‹ ê³ í™”ë©´";
 		JLabel title = new JLabel(label);
 		title.setLocation(50,15);
 		title.setSize(200,30);
 		c.add(title);
 		JPanel panel = new JPanel() {
-			// ¹è°æÀÌ¹ÌÁö¿Í ¹Ø ¶óÀÎÀ» ±×¸®±â À§ÇÑ paintComponent()¸Ş¼Òµå
+			// ë°°ê²½ì´ë¯¸ì§€ì™€ ë°‘ ë¼ì¸ì„ ê·¸ë¦¬ê¸° ìœ„í•œ paintComponent()ë©”ì†Œë“œ
 			public void paintComponent(Graphics g) {
 				g.drawImage(backgroundImage, 0, 0, 800, 600, null);
 				Graphics2D g2 = (Graphics2D) g;
@@ -37,12 +37,12 @@ public class ReportFrame extends JFrame {
 		c.add(reportContent);
 		reportContent.setBorder(new LineBorder(Color.BLACK));
 		
-		JButton reportdBtn = new JButton("½Å°í"); //¿ä¸®ÃßÃµ ¹öÆ°
+		JButton reportdBtn = new JButton("ì‹ ê³ "); //ìš”ë¦¬ì¶”ì²œ ë²„íŠ¼
 		reportdBtn.setSize(100,30);
 		reportdBtn.setLocation(250, 500);
 		c.add(reportdBtn);
 		
-		JButton backBtn = new JButton("µÚ·Î °¡±â"); //½Å°í ¹öÆ°
+		JButton backBtn = new JButton("ë’¤ë¡œ ê°€ê¸°"); //ì‹ ê³  ë²„íŠ¼
 		backBtn.setSize(100,30);
 		backBtn.setLocation(400, 500);
 		backBtn.addActionListener(new ActionListener(){ 
