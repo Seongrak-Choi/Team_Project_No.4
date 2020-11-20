@@ -22,87 +22,19 @@ public class Food {
 		recipeArray=recipe.split("#");  // 한줄로 받은 레시피를 #으로 나누어 배열을 생성해준다.
 		ingreientArray=ingredient.split("#"); // 한줄로 받은 재료들을 #으로 나누어 배열을 생성해준다.
 	}
-
-	public int getCategoryNo() {
-		return categoryNo;
-	}
-
-	public void setCategoryNo(int categoryNo) {
-		this.categoryNo = categoryNo;
-	}
-
-	public int getRecommend() {
-		return recommend;
-	}
-
-	public void setRecommend(int recommend) {
-		this.recommend = recommend;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getLink() {
-		return link;
-	}
-
-	public void setLink(String link) {
-		this.link = link;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	
 	public String getIngredient() {
-		return ingredient;
-	}
-
-	public void setIngredient(String ingredient) {
-		this.ingredient = ingredient;
-	}
-
-	public String getQuanti() {
-		return quantitative;
-	}
-
-	public void setQuanti(String quantitative) {
-		this.quantitative = quantitative;
-	}
-
-	public String getRecipe() {
-		return recipe;
-	}
-
-	public void setRecipe(String recipe) {
-		this.recipe = recipe;
-	}
-
-	public String[] getRecipeArray() {
-		return recipeArray;
-	}
-
-	public void setRecipeArray(String[] recipeArray) {
-		this.recipeArray = recipeArray;
-	}
-
-	public String[] getIngreientArray() {
-		return ingreientArray;
-	}
-
-	public void setIngreientArray(String[] ingreientArray) {
-		this.ingreientArray = ingreientArray;
+		return this.ingredient;
 	}
 	
-
+	public String getRecipe() {
+		return this.recipe;
+	}
+	public String getName() {
+		return this.name;
+	}
+	public String getQuanti() {
+		return this.quantitative;
+	}
 
 }

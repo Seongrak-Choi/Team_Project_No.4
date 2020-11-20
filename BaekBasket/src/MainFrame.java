@@ -14,6 +14,8 @@ public class MainFrame extends JFrame{
 	public static int side;
 	public static int rice;
 	public static int etc;
+	public static String[] basketArray = new String[50];
+	public static int basketIndex=0;
 	public MainFrame(Food[] food) {
 		Food[] f=food;
 		Font f1;
@@ -59,14 +61,19 @@ public class MainFrame extends JFrame{
 
 		bSelectIngredient.addActionListener(new ActionListener(){ // FoodSelectInterface 생성
 			public void actionPerformed(ActionEvent e){
-				FoodSelectInterface foodSelectInterface = new FoodSelectInterface(f); 
+				FoodSelectInterface foodSelectInterface = new FoodSelectInterface(); 
 			}
 		});;
 
-		JButton bBarsket = new JButton("장바구니 "); 
-		bBarsket.setLocation(270,200);
-		bBarsket.setSize(250,50);
-		bBarsket.setBackground(Color.WHITE);
+		JButton bBasket = new JButton("장바구니 "); 
+		bBasket.setLocation(270,200);
+		bBasket.setSize(250,50);
+		bBasket.setBackground(Color.WHITE);
+		bBasket.addActionListener(new ActionListener(){  // 시스템 종료
+			public void actionPerformed(ActionEvent e){
+				new ShoppingBasketFrame(basketArray);
+			}
+		});;
 
 		JButton bCancel = new JButton("  종  료  ");
 		bCancel.setLocation(270,285);
@@ -82,7 +89,7 @@ public class MainFrame extends JFrame{
 		panel1.add(label);
 		panel2.add(bSelectCook);
 		panel2.add(bSelectIngredient);
-		panel2.add(bBarsket);
+		panel2.add(bBasket);
 		panel2.add(bCancel);
 
 		frame.add(panel1);
@@ -124,4 +131,8 @@ public class MainFrame extends JFrame{
 				break; // 모두 검색하고 닫기
 		new MainFrame(f);
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/Seongrak-Choi/Team_Project_No.4.git

@@ -171,7 +171,6 @@ public class CookListFrame extends JFrame {
 			if(e.getSource()==bBack) 
 				frame.dispose();
 			else if(e.getSource()==bSnack) {
-				String[] copySnack = new String[MainFrame.snack];
 				lCookList.setListData(snack);
 			}
 			else if(e.getSource()==bSoup) 
