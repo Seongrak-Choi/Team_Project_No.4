@@ -59,7 +59,7 @@ public class MainFrame extends JFrame{
 
 		bSelectIngredient.addActionListener(new ActionListener(){ // FoodSelectInterface 생성
 			public void actionPerformed(ActionEvent e){
-				FoodSelectInterface foodSelectInterface = new FoodSelectInterface(); 
+				FoodSelectInterface foodSelectInterface = new FoodSelectInterface(f); 
 			}
 		});;
 
