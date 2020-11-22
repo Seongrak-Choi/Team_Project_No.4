@@ -1,37 +1,46 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 
-//import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
+
 
 public class RecipeInterface extends JFrame{
 
-	Food chosenFood;
+	Food f;
 	String[] recipeArray;
 	String[] ingredientArray;
 	String[] quantitativeArray;
 	JCheckBox[] ingredientBtn;
 
 	public RecipeInterface(Food food) {
-		setTitle("백바구니");
+		f = food;
+		setTitle(f.getName());
 		setSize(800,600);
 		setVisible(true);
 		//setResizable(false); //프레임 크기 고정
 		Container c = getContentPane();
 		c.setLayout(null);
-		chosenFood = food;
+		
+		String link=f.getLink();
 		c.setBackground(Color.white);
 
 
-		recipeArray =chosenFood.getRecipe().split("#");  //한줄의 string으로 된 레시피를 #마다 끊어서 string배열을 만들어준다. 
-		ingredientArray=chosenFood.getIngredient().split("#"); //한줄의 string으로 된 재료를 #마다 끊어서 string배열을 만들어준다. 
-		quantitativeArray=chosenFood.getQuanti().split("#"); //한줄의 string으로 된 정량을 #마다 끊어서 string배열을 만들어준다. 
-		JLabel foodName = new JLabel(chosenFood.getName()); //요리의 이름을 출력하는 Label
+		recipeArray =f.getRecipe().split("#");  //한줄의 string으로 된 레시피를 #마다 끊어서 string배열을 만들어준다. 
+		ingredientArray=f.getIngredient().split("#"); //한줄의 string으로 된 재료를 #마다 끊어서 string배열을 만들어준다. 
+		quantitativeArray=f.getQuanti().split("#"); //한줄의 string으로 된 정량을 #마다 끊어서 string배열을 만들어준다. 
+		JLabel foodName = new JLabel("요리 레시피");
+		JLabel quantitativeLa= new JLabel("재료 정량");
+		
 		foodName.setLocation(20,1);
 		foodName.setSize(100,30);
+		quantitativeLa.setSize(100,30);
+		quantitativeLa.setLocation(20,270);
+		
 		c.add(foodName);
-
-
+		c.add(quantitativeLa);
+		
 		JButton recommendBtn = new JButton("요리 추천"); //요리추천 버튼
 		recommendBtn.setSize(100,30);
 		recommendBtn.setLocation(470, 520);
@@ -61,8 +70,18 @@ public class RecipeInterface extends JFrame{
 			}
 		});;
 		c.add(backBtn);
-
-
+	
+		JButton youtubeBtn = new JButton("유튜브 보러가기");
+		youtubeBtn.setSize(130,30);
+		youtubeBtn.setLocation(330,520);
+		youtubeBtn.setBackground(Color.white);
+		youtubeBtn.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				new YouTubeViewer(f.getLink());
+			}
+		});
+		c.add(youtubeBtn);
+		
 		JTextArea quantitativeList = new JTextArea(); //레시피가 담길 JTextArea
 		quantitativeList.setLineWrap(true); // size를 벗어날 경우 자동 줄바꿈
 		quantitativeList.setEditable(false); // 사용자가 textarea를 수정 할 수 없게 설정.
@@ -70,8 +89,8 @@ public class RecipeInterface extends JFrame{
 			quantitativeList.append(quantitativeArray[i]+"\n\n");
 
 		JScrollPane quantitativeScrollPane = new JScrollPane(quantitativeList); // 스크롤바가 달려있는 JScrollPane에 JTextArea recipeList를 달아준다.
-		quantitativeScrollPane.setLocation(520,30); // JScrollPane sp의 위치를 설정한다.
-		quantitativeScrollPane.setSize(250,240); // JScrollPane sp의 크기를 설정한다.
+		quantitativeScrollPane.setLocation(20,300); // JScrollPane sp의 위치를 설정한다.
+		quantitativeScrollPane.setSize(480,210); // JScrollPane sp의 크기를 설정한다.
 		c.add(quantitativeScrollPane);
 
 
@@ -93,10 +112,11 @@ public class RecipeInterface extends JFrame{
 		ingredientPane.setLayout(new GridLayout(ingredientArray.length,1));
 
 		JScrollPane ingredientScrollPane = new JScrollPane(ingredientPane); //ingredientPane을 부착시킬 스크롤 팬
-		ingredientScrollPane.setSize(250,200);
-		ingredientScrollPane.setLocation(520, 280);
+		ingredientScrollPane.setSize(250,250);
+		ingredientScrollPane.setLocation(520, 30);
 		ingredientScrollPane.setBackground(Color.white);
 		c.add(ingredientScrollPane);
+		
 
 
 		
@@ -110,7 +130,7 @@ public class RecipeInterface extends JFrame{
 		}
 
 		JButton basketAddBtn = new JButton("장바구니에 추가");
-		basketAddBtn.setLocation(650, 485);
+		basketAddBtn.setLocation(650, 290);
 		basketAddBtn.setSize(130,30);
 		basketAddBtn.setBackground(Color.WHITE);
 		basketAddBtn.addActionListener(new ActionListener(){ 
@@ -140,6 +160,16 @@ public class RecipeInterface extends JFrame{
 		c.add(basketAddBtn);
 
 
+	}
+	
+	
+	public static JPanel getBrowserPanel() {
+		JPanel webBrowserPanel = new JPanel(new GridLayout(1,1));
+		JWebBrowser webBrowser = new JWebBrowser();
+		webBrowserPanel.add(webBrowser);
+		webBrowser.setBarsVisible(true);    	
+		webBrowser.navigate("https://www.youtube.com/watch?v=R6IT_f0XPT8");
+		return webBrowserPanel;
 	}
 
 }

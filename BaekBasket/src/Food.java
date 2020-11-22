@@ -18,6 +18,7 @@ public class Food {
 		this.recipe=recipe;
 		this.id=id;
 		this.quantitative=quantitative;
+		this.link=link;
 		
 		recipeArray=recipe.split("#");  // 한줄로 받은 레시피를 #으로 나누어 배열을 생성해준다.
 		ingreientArray=ingredient.split("#"); // 한줄로 받은 재료들을 #으로 나누어 배열을 생성해준다.
@@ -35,6 +36,9 @@ public class Food {
 	}
 	public String getQuanti() {
 		return this.quantitative;
+	}
+	public String getLink() {
+		return this.link;
 	}
 
 }

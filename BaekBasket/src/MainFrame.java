@@ -1,5 +1,3 @@
-package Team;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,6 +6,8 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 
 public class MainFrame extends JFrame{
 	public static int index;
@@ -63,7 +63,7 @@ public class MainFrame extends JFrame{
 
 		bSelectIngredient.addActionListener(new ActionListener(){ // FoodSelectInterface 생성
 			public void actionPerformed(ActionEvent e){
-			 
+			 new FoodSelectInterface(f);
 			}
 		});;
 

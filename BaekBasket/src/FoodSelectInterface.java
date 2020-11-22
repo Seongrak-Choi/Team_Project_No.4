@@ -1,112 +1,68 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.StyledEditorKit.BoldAction;
 
+
 public class FoodSelectInterface extends JFrame {
-	private Image backgroundImage = new ImageIcon("src/image/image.png").getImage();
-	private Object[] column = { " ", "Àç·á" };
-	private Object[][] raw = { { false, "Àç·á1" }, { false, "Àç·á2" }, { false, "Àç·á3" }, { false, "Àç·á4" },
-			{ false, "Àç·á5" }, { false, "Àç·á6" }, { false, "Àç·á7" }, { false, "Àç·á8" }, { false, "Àç·á9" }, { false, "Àç·á10" },
-			{ false, "Àç·á11" }, { false, "Àç·á12" }, { false, "Àç·á13" }, { false, "Àç·á14" }, { false, "Àç·á15" },
-			{ false, "Àç·á16" }, { false, "Àç·á17" }, { false, "Àç·á18" }, { false, "Àç·á19" }, { false, "Àç·á20" },
-			{ false, "Àç·á21" }, { false, "Àç·á22" }, { false, "Àç·á23" }, { false, "Àç·á24" }, { false, "Àç·á25" },
-			{ false, "Àç·á26" }, { false, "Àç·á27" }, { false, "Àç·á28" }, { false, "Àç·á29" }, { false, "Àç·á30" },
-			{ false, "Àç·á31" }, { false, "Àç·á32" }, { false, "Àç·á33" }, { false, "Àç·á34" }, { false, "Àç·á35" },
-			{ false, "Àç·á36" }, { false, "Àç·á37" }, { false, "Àç·á38" }, { false, "Àç·á39" }, { false, "Àç·á40" },
-			{ false, "Àç·á41" }, { false, "Àç·á42" }, { false, "Àç·á43" }, { false, "Àç·á44" }, { false, "Àç·á45" },
-			{ false, "Àç·á46" }
-
-	};
-	private String[] avi = { "¿µ»ó1" , "¿µ»ó2", "¿µ»ó3", "¿µ»ó4", "¿µ»ó5", "¿µ»ó6", "¿µ»ó7",
-			 "¿µ»ó8" , "¿µ»ó9", "¿µ»ó10", "¿µ»ó11", "¿µ»ó12", "¿µ»ó13", "¿µ»ó14",
-			 "¿µ»ó15" , "¿µ»ó16", "¿µ»ó17", "¿µ»ó18", "¿µ»ó19", "¿µ»ó20", "¿µ»ó21",
-			 "¿µ»ó22" , "¿µ»ó23", "¿µ»ó24", "¿µ»ó25", "¿µ»ó26", "¿µ»ó27", "¿µ»ó28"
-			};
-
-	public FoodSelectInterface() {
-		// ¸ŞÀÎ ÇÁ·¹ÀÓ
-		JFrame frame = new JFrame();
-		// ¸ŞÀÎ ÆĞ³Î
-		JPanel panel = new JPanel() {
-			// ¹è°æÀÌ¹ÌÁö¿Í ¹Ø ¶óÀÎÀ» ±×¸®±â À§ÇÑ paintComponent()¸Ş¼Òµå
-			public void paintComponent(Graphics g) {
-				g.drawImage(backgroundImage, 0, 0, 800, 600, null);
-				Graphics2D g2 = (Graphics2D) g;
-				g2.setStroke(new BasicStroke(1, Font.BOLD, 0));
-				g2.drawLine(0, 530, 800, 530);
+	
+	JCheckBox[] ingredientBox;
+	JList cookList = new JList();
+	
+	public FoodSelectInterface(Food[] food) {
+		Food[] f=food;
+		setTitle("ë°±ë°”êµ¬ë‹ˆ");
+		setSize(800,600);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		
+		Container c = getContentPane();
+		c.setLayout(null);
+		
+		JPanel checkPane = new JPanel(); //frameì— ë¶€íƒë  ì¬ë£Œì„ íƒ panel
+		JPanel listPane = new JPanel(); //frameì— ë¶€íƒë  ìš”ë¦¬ë¦¬ìŠ¤íŠ¸ panel
+		JButton searchBtn=new JButton("ê²€ ìƒ‰"); //í´ë¦­ì‹œ ì„ íƒí•œ ì¬ë£Œë“¤ë¡œ ìš”ë¦¬ì¶”ì²œì„ í•´ì£¼ëŠ” ë²„íŠ¼
+		JButton backBtn=new JButton("ë’¤ë¡œê°€ê¸°"); //í´ë¦­ì‹œ ì°½ì´ ë‹«íˆëŠ” ë²„íŠ¼
+		
+		//checkPane.add(ingredientBox);  checkBox ê°ì²´ ìƒì„±í•  ë•Œ ë¶™í˜€ì¤˜ì•¼ ê² ìŒ. 
+		listPane.add(cookList);
+		
+		checkPane.setLocation(20,10);            
+		checkPane.setSize(740,250);
+		checkPane.setBackground(Color.yellow);
+		listPane.setLocation(20,330);
+		listPane.setSize(740,350);
+		listPane.setBackground(Color.pink);
+		
+		
+		searchBtn.setLocation(680,220);
+		searchBtn.setSize(80,30);
+		backBtn.setLocation(660,500);
+		backBtn.setSize(100,30);
+		backBtn.addActionListener(new ActionListener(){ 
+			public void actionPerformed(ActionEvent e) {
+				dispose();
 			}
-		};
-
-		panel.setLayout(null);
-		panel.setBackground(Color.white);
-
-		frame.add(panel);
-
-		// °Ë»ö¹öÆ°
-		JButton btn1 = new JButton("°Ë»ö");
-		btn1.setLayout(null);
-		btn1.setSize(60, 20);
-		btn1.setLocation(660, 230);
-		btn1.setBackground(Color.white);
-		panel.add(btn1);
-
-		// µÚ·Î°¡±â ¹öÆ°
-		JButton btn2 = new JButton("µÚ·Î°¡±â");
-		btn2.setLayout(null);
-		btn2.setSize(86, 20);
-		btn2.setLocation(635, 500);
-		btn2.setBackground(Color.white);
-		panel.add(btn2);
-
-		// Àç·á¼±ÅÃ Å×ÀÌºí ±¸¼º
-		DefaultTableModel dtm = new DefaultTableModel(raw, column);
-		JTable table = new JTable(dtm);
-		table.setBounds(20, 20, 700, 200);
-
-		table.getColumn(" ").setCellRenderer(dcr);
-		JCheckBox box = new JCheckBox();
-		box.setHorizontalAlignment(JLabel.CENTER);
-		table.getColumn(" ").setCellEditor(new DefaultCellEditor(box));
-
-		// Àç·á¼±ÅÃ Å×ÀÌºí¿¡ ½ºÅ©·Ñ ´Ş±â
-		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(table.getX(), table.getY(), table.getWidth(), table.getHeight());
-		panel.add(scrollPane, "Center");
-
-		// ¿µ»ó Å×ÀÌºí ¸®½ºÆ®
-		JList list = new JList(avi);
-		list.setBounds(20, 290, 700, 200);
-		JScrollPane sp = new JScrollPane(list);
-		sp.setBounds(list.getX(), list.getY(), list.getWidth(), list.getHeight());
-		panel.add(sp, "Center");
+		});;
 		
+		c.add(backBtn);
+		c.add(searchBtn);
 		
-		frame.setTitle("¹é¹Ù±¸´Ï");
-		frame.setResizable(false);
-		frame.setVisible(true);
-		frame.setSize(800, 600);
-		frame.setLocationRelativeTo(null);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		JScrollPane checkScrollPane = new JScrollPane(checkPane);
+		checkScrollPane.setLocation(20,10);            
+		checkScrollPane.setSize(740,200);
+		JScrollPane listScrollPane = new JScrollPane(listPane);
+		listScrollPane.setLocation(20,260);
+		listScrollPane.setSize(740,230);
+		
+		c.add(checkScrollPane);
+		c.add(listScrollPane);
+		
 	}
-
-	public static void main(String[] args) {
-		new FoodSelectInterface();
-
-	}
-
-	// Àç·á¼±ÅÃ Å×ÀÌºí¿¡ ´ãÀ» Ã¼Å©¹Ú½º ±¸Çö
-	DefaultTableCellRenderer dcr = new DefaultTableCellRenderer() {
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-				int row, int column) {
-			JCheckBox box = new JCheckBox();
-			box.setSelected(((Boolean) value).booleanValue());
-			box.setHorizontalAlignment(JLabel.CENTER);
-			return box;
-		}
-	};
-
+	
 }
