@@ -173,10 +173,3 @@ public class RecipeInterface extends JFrame{
 	}
 
 }
-
-
-
-
-
-	
-

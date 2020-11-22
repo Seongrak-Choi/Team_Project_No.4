@@ -8,7 +8,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.StyledEditorKit.BoldAction;
 
-
 public class FoodSelectInterface extends JFrame {
 	
 	JCheckBox[] ingredientBox;
@@ -49,20 +48,5 @@ public class FoodSelectInterface extends JFrame {
 				dispose();
 			}
 		});;
-		
-		c.add(backBtn);
-		c.add(searchBtn);
-		
-		JScrollPane checkScrollPane = new JScrollPane(checkPane);
-		checkScrollPane.setLocation(20,10);            
-		checkScrollPane.setSize(740,200);
-		JScrollPane listScrollPane = new JScrollPane(listPane);
-		listScrollPane.setLocation(20,260);
-		listScrollPane.setSize(740,230);
-		
-		c.add(checkScrollPane);
-		c.add(listScrollPane);
-		
 	}
-	
 }
