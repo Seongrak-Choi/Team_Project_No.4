@@ -12,6 +12,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class ReportFrame extends JFrame {
+	public ImageIcon icon3 = new ImageIcon("images\\image3.png");
 	int reportNo = 1;
 
 	public ReportFrame(Food food) {
@@ -19,19 +20,29 @@ public class ReportFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 600);
 		setVisible(true);
+		
 		Container c = getContentPane();
-		c.setLayout(null);
-		c.setBackground(Color.ORANGE);
+		JPanel panel = new JPanel(){
+			public void paintComponent(Graphics g) {
+				g.drawImage(icon3.getImage(),0,0,800,600, null);
+				setOpaque(false);
+				super.paintComponent(g);
+			}
+		};
+
+		
+		panel.setLayout(null);
 		String label = food.getName() + " 신고화면";
 		JLabel title = new JLabel(label);
 		title.setLocation(50, 15);
 		title.setSize(200, 30);
-		c.add(title);
+		c.add(panel);
+		panel.add(title);
 
 		JTextArea reportContent = new JTextArea();
 		reportContent.setLocation(50, 50);
 		reportContent.setSize(650, 400);
-		c.add(reportContent);
+		panel.add(reportContent);
 		reportContent.setBorder(new LineBorder(Color.BLACK));
 
 		JButton reportBtn = new JButton("신고");
@@ -58,7 +69,7 @@ public class ReportFrame extends JFrame {
 				}
 			}
 		});
-		c.add(reportBtn);
+		panel.add(reportBtn);
 
 		JButton backBtn = new JButton("취소");
 		backBtn.setSize(100, 30);
@@ -69,6 +80,6 @@ public class ReportFrame extends JFrame {
 				dispose();
 			}
 		});
-		c.add(backBtn);
+		panel.add(backBtn);
 	}
 }

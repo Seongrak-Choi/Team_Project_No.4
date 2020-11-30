@@ -2,73 +2,83 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 public class ShoppingBasketFrame extends JFrame{
-	JCheckBox[] ingredientBtn;
-	
-	public ShoppingBasketFrame(String[] str) {
-		String[] ingredientArray = str;
+   public ImageIcon icon3 = new ImageIcon("images/image3.png");
+   JCheckBox[] ingredientBtn;
 
-		setTitle("백바구니");
-		setSize(800,600);
-		setVisible(true);
+   public ShoppingBasketFrame(String[] str) {
+      String[] ingredientArray = str;
 
-		Container c = getContentPane();
-		c.setLayout(null);
+      setTitle("백바구니");
+      setSize(800,600);
+      setVisible(true);
 
-		JButton backBtn = new JButton("뒤로가기");
-		backBtn.setLocation(670,500);
-		backBtn.setSize(100,30);
-		backBtn.addActionListener(new ActionListener(){ 
-			public void actionPerformed(ActionEvent e){
-				dispose();
-			}
-		});;
-		c.add(backBtn);
+      Container c = getContentPane();
+      JPanel panel = new JPanel(){
+         public void paintComponent(Graphics g) {
+            g.drawImage(icon3.getImage(),0,0,800,600, null);
+            setOpaque(false);
+            super.paintComponent(g);
+         }
+      };
+      c.add(panel);
+      panel.setLayout(null);
 
-		JButton deleteBtn = new JButton("삭 제");   
-		deleteBtn.setLocation(590,500);
-		deleteBtn.setSize(70,30);
-		deleteBtn.addActionListener(new ActionListener(){ 
-			public void actionPerformed(ActionEvent e) {    //체크박스를 체크하고 삭제 버튼을 누르면 MainFrame에 있는 basketArray배열중 해당하는 값들이 삭제가 된다.
-				int checkedNum=0;
-				int j=0;
-				
-				for(int i=0;i<MainFrame.basketIndex;i++) {
-					if(ingredientBtn[i].isSelected()) 
-						checkedNum++;
-					else {
-						MainFrame.basketArray[j]=MainFrame.basketArray[i];
-						j++;
-					}
-				}
-			
-				for(int i=0;i<checkedNum;i++)
-					MainFrame.basketIndex--;
-			
-				dispose();
-				new ShoppingBasketFrame(ingredientArray);
-			}
-		});;
-		c.add(deleteBtn);
+      JButton backBtn = new JButton("뒤로가기");
+      backBtn.setLocation(670,500);
+      backBtn.setSize(100,30);
+      backBtn.addActionListener(new ActionListener(){ 
+         public void actionPerformed(ActionEvent e){
+            dispose();
+         }
+      });;
+      panel.add(backBtn);
 
-		JPanel basketPane = new JPanel();
-		basketPane.setLayout(new GridLayout(MainFrame.basketArray.length,1)); //재료의 개수 만큼 행을 나눠줘야해서 배열의 길이만큼 행을 생성
-		basketPane.setSize(750,450);
+      JButton deleteBtn = new JButton("삭 제");   
+      deleteBtn.setLocation(590,500);
+      deleteBtn.setSize(70,30);
+      deleteBtn.addActionListener(new ActionListener(){ 
+         public void actionPerformed(ActionEvent e) {    //체크박스를 체크하고 삭제 버튼을 누르면 MainFrame에 있는 basketArray배열중 해당하는 값들이 삭제가 된다.
+            int checkedNum=0;
+            int j=0;
 
-		ingredientBtn= new JCheckBox[MainFrame.basketIndex];
-		for(int i=0;i<MainFrame.basketIndex;i++) {
-			ingredientBtn[i]=new JCheckBox(MainFrame.basketArray[i]);
-			ingredientBtn[i].setBorderPainted(true);
-			ingredientBtn[i].setBackground(Color.pink);
-			ingredientBtn[i].setForeground(Color.white);
-			//ingredientBtn[i].addItemListener(listener);
-			basketPane.add(ingredientBtn[i]);
-		}
+            for(int i=0;i<MainFrame.basketIndex;i++) {
+               if(ingredientBtn[i].isSelected()) 
+                  checkedNum++;
+               else {
+                  MainFrame.basketArray[j]=MainFrame.basketArray[i];
+                  j++;
+               }
+            }
 
-		JScrollPane p1 = new JScrollPane(basketPane);
-		p1.setSize(750,450);
-		p1.setLocation(15,15);
-		p1.setBackground(Color.yellow);
+            for(int i=0;i<checkedNum;i++)
+               MainFrame.basketIndex--;
 
-		c.add(p1);
-	}
+            dispose();
+            new ShoppingBasketFrame(ingredientArray);
+         }
+      });;
+      panel.add(deleteBtn);
+
+      JPanel basketPane = new JPanel();
+      basketPane.setBackground(Color.white);
+      basketPane.setLayout(new GridLayout(MainFrame.basketArray.length,1)); //재료의 개수 만큼 행을 나눠줘야해서 배열의 길이만큼 행을 생성
+      basketPane.setSize(750,450);
+
+      ingredientBtn= new JCheckBox[MainFrame.basketIndex];
+      for(int i=0;i<MainFrame.basketIndex;i++) {
+         ingredientBtn[i]=new JCheckBox(MainFrame.basketArray[i]);
+         ingredientBtn[i].setBorderPainted(true);
+         ingredientBtn[i].setBackground(Color.pink);
+         ingredientBtn[i].setForeground(Color.white);
+         //ingredientBtn[i].addItemListener(listener);
+         basketPane.add(ingredientBtn[i]);
+      }
+
+      JScrollPane p1 = new JScrollPane(basketPane);
+      p1.setSize(750,450);
+      p1.setLocation(15,15);
+      p1.setBackground(Color.yellow);
+
+      panel.add(p1);
+   }
 }

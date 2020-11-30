@@ -38,10 +38,5 @@ public class YouTubeViewer {
 		return webBrowserPanel;
 	}
 
-
-	public static void main(String[] args) {
-		//new YouTubeViewer();
-	}
-
 	
 }

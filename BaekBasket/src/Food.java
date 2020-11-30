@@ -40,5 +40,12 @@ public class Food {
 	public String getLink() {
 		return this.link;
 	}
+	public int getId() {
+		return this.id;
+	}
+	public int getCategoryNo() {
+		return this.categoryNo;
+	}
+	
 
 }
